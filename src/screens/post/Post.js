@@ -2,7 +2,9 @@ import React from 'react';
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
 
-import { posts, users } from "../data/data";
+import "./post.css"
+import { posts, users } from "../../data/data";
+
 
 const Post = () => {
     const {id} = useParams();
@@ -10,6 +12,8 @@ const Post = () => {
             tags,
             userId,
             body} = posts.find(post => post.postId === +id);
+
+
     const author = users.find(user => user.userId === userId);
     
     const relatedArticles = posts.filter(post => post.tags.some(tag => tags.includes(tag)));
@@ -32,14 +36,22 @@ const Post = () => {
         </aside>
         <section className="post">
             <h2 className="post__title">{title}</h2>
-            <p className="author-name"><strong>Yazar:</strong> {author.name}</p>
+            <p className="author-name"><strong>Yazar:</strong> { author.name }</p>
             <p>
                 <span><strong>etiketler:</strong></span>
                 {
                     tags.map(tag => <Link key={tag} to={"/search/" + tag}><span className="badge badge-pill badge-info mx-1">{tag}</span></Link>)
                 }
             </p>
-            <p className="post__body">{body}</p>
+            <div className="post__body">{
+                body.map((arr,ind) => (
+                    arr[0]==="h2" ? (
+                      <h2
+                        key={ind}
+                        className="post__body--subtitle"
+                      >{ arr[1] }</h2>): arr[0] === "p" ? <p key={ind} className="post__body--parag">{arr[1]}</p>: arr[0]==="code" ? <pre key={ind} className="post__body--pre"><code>{arr[1]}</code></pre>: null
+                ))
+            }</div>
         </section>
         </>
     )

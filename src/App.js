@@ -1,15 +1,17 @@
 import React from 'react';
 import { Switch, Route} from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ToTopButton from "./components/ToTopButton";
-import Home from "./screens/Home";
-import PostList from "./screens/PostList";
-import UserList from "./screens/UserList";
-import Post from "./screens/Post";
-import User from "./screens/User";
-import Search from "./screens/Search";
+
+import {Header, Footer, ToTopButton} from "./components/";
+
+import {
+    Home,
+    PostList,
+    UserList,
+    Post,
+    User,
+    Search
+} from "./screens/";
 
 const App = () => {
     return ( 
