@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { posts } from "../data/data";
+import { posts } from "../../data/data";
 
 const PostList = () => {
     
@@ -16,10 +16,10 @@ const PostList = () => {
                    </div> 
                    <div className="card-body">
                        <h4 className="card-title">{post.title}</h4>
-                       <p className="card-text">{post.getIntro(post.body)}</p>
+                       <p className="card-text">{post.getIntro()}</p>
                        <p className="text-muted">  
                             {`Okuma süresi: yaklaşık 
-                               ${post.getReadingTime(post.body)} dakika`
+                               ${post.getReadingTime()} dakika`
                            } 
                        </p>
                        <Link to={"/post/" + post.postId} >

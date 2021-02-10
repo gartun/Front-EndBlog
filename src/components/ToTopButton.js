@@ -26,7 +26,7 @@ const ToTopButton = () => {
         });
     }
     return (
-        <button onClick={toTop} className="btn btn-warning to-top-btn " style={{borderRadius: "50%"}} >
+        <button onClick={toTop} className="btn btn-warning to-top-btn rounded-circle" >
             <span className="sr-only">Bu butona basıldığında sayfanın başına dönülür.</span>
         {"\u{005E}"}
         </button>

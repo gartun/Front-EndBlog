@@ -9,6 +9,16 @@
   box-shadow: 1px 1px 10px black;
 }
 
+.post__content--ul {
+  width: 90%;
+  max-width: 500px;
+  border: 1px darkslategray solid;
+  padding: 1em;
+  margin: 0.5em auto;
+  list-style: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px darkgray;
+}
 .post__body--subtitle {
   margin: 1.2em 0 0.5em;
   border-bottom: 1px solid darkslateblue;
@@ -21,6 +31,28 @@
 .post__body--parag {
   text-indent: 1em;
   font-weight: 500;
+}
+
+.post__body--pre{
+  border-radius: 5px;
+  max-height: 350px;
+  background-color: #232323;
+  color: ghostwhite;
+  box-shadow: 1px 1px 10px #565656;
+  padding: .5em;
+}
+
+.post__body--pre code {
+  z-index: 333;
+}
+
+.post__body--subh3 {
+  color: coral;
+  text-indent: .5em;
+  border-bottom: 1px solid gray;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-bottom: .3em;
 }
 
 .related-articles {

@@ -69,44 +69,293 @@ export const users = [
     },
 ];
 
-export const posts = [
-    {
-        title: "Sass - Baştan Sona",
-        tags: ["css", "frontend", "arayüz", "sass", "tasarım", "css3", "stil"],
-        postId: 252,
-        img: "./img/css3.svg",
-        userId: 13,
-        body: [
-            ["h2", "Sass Nedir?"],
-            ["p","Kendi sitesinden alıntı yaparsak; Sass, CSS'e dönüştürülen bir stil şeması dilidir. Değişkenlerin, fonksiyonların ve stil yazımını kolaylaştıran daha birçok parçanın kullanımına olanak sağlar. Büyük çaplı internet sitelerinin stil şemalarının tertip ve takibini kolaylaştırır."],
-            ["h2", "Yükleme ve Başlangıç"],
-        ],
-        
-        getReadingTime: (thisBody) => {
-            let wholeText = "";
-            for(let el of thisBody) {
-                if(el[0] === "p"){
-                    wholeText += el[1]
-                }
-            }
-            return Math.ceil(wholeText.split(" ").length / 225) + 3;
-        },
+function Post(title, tags, postId, img, userId, body) {
+    this.title = title;
+    this.tags = tags;
+    this.postId = postId;
+    this.img = img;
+    this.userId = userId;
+    this.body = body;
+}
 
-        getIntro: (thisBody) => {
-            let post = [];
-            for(let el of thisBody){
-                if(el[0] === "p") {
-                    post = el[0];
-                    return;
-                } continue;
-            }
-            return post[1].substr(0, 100)
+Post.prototype.getReadingTime = function() {
+    let wholeText = "";
+    for(let el of this.body) {
+        if(el[0] === "p"){
+            wholeText += el[1]
         }
     }
-//     {
-//         title: "Html5 ve Css3 - Giriş",
-//         tags: ["html", "html5", "css3","css", "web tasarım", "web kodlama", "mark-up"],
-//         postId: 209,
+    return Math.ceil(wholeText.split(" ").length / 225) + 2;
+};
+
+Post.prototype.getIntro = function() {
+    let post = [];
+    for(let el of this.body){
+        if(el[0] === "p") {
+            post = el[0];
+            return;
+        } continue;
+    }
+    return post[1].substr(0, 100)
+};
+
+export const posts = [
+    new Post("Sass - Genel Bakış",
+            ["css", "frontend", "arayüz", "sass", "tasarım", "css3", "stil"],
+            252,
+            "./img/css3.svg",
+            13,
+            [
+                ["h2", "Sass Nedir?"],
+                ["p","Kendi sitesinden alıntı yaparsak; Sass, CSS'e dönüştürülen bir stil şeması dilidir. Değişkenlerin, fonksiyonların ve stil yazımını kolaylaştıran daha birçok parçanın kullanımına olanak sağlar. Büyük çaplı internet sitelerinin stil şemalarının tertip ve takibini kolaylaştırır."],
+                ["h2", "Yükleme ve Başlangıç"],
+            ["p", "Stil kodlarınızın yazımı sırasında Sass kullanmak için başvurabileceğiniz birkaç tane farklı yol olmasına rağmen(çevrimiçi dönüştürücüler, editör eklentileri gibi) ben, Node.js'in paket yöneticisi olan npm vasıtasıyla Sass'i bilgisayarınıza indirmenizi öneririm. Eğer daha önce Node.js'i bilgisayarınıza kurmamışsanız resmi sitesine uğrayarak indirebilirsiniz, tamamen ücretsizdir. Paket yöneticisi için ekstra hiçbir şey yapmanıza gerek yok, Node.js'i indirip kurduğunuz vakit npm de kullanıma hazır hale gelecektir."],
+            ["p", "Gerekli kurulumları yaptıysanız sizden fare imlecinizi şimdi masaüstü ekranında boş bir yere getirmenizi ve klavyede Shift tuşuna parmağınızı basılı tutarken aynı anda farenizin ikincil tuşuna(genellikle sağ tuş) tıklamanızı istiyorum. Fare imlecinin hemen yanında ortaya çıkan seçenek listesinde 'Komut penceresini burada aç' seçeneğini bulun ve tıklayın, karşınıza çıkan konsol ekranına aşağıdaki kodları yazın ve Enter'a basın."],
+            ["code","mkdir sass-test && cd sass-test"],
+            ["p","Yukarıdaki komutlar, sırasıyla, bizim 'sass-test' adını taşıyan bir klasör oluşturmamızı, daha sonra bu klasörün içine girmemizi sağlıyorlar. sass-test ismi benim keyfi olarak oluşturduğum bir isim, siz istediğinizi yazabilirsiniz. Şimdi sıra bilgisayarımıza Sass'i indirmenin vakti; komut penceresine şu komutu girin ve Enter'a basın."],
+            ["code","npm install -g sass"],
+            ["p","npm, bildiğiniz gibi, paket yöneticisinin adı. Hemen ardından gelen 'install' komutu ise adını vereceğimiz paketin bilgisayarımıza indirilip kurulması gerektiğini belirtiyor. -g opsiyonu ile paketin bilgisayara global olarak, yani bilgisayarın her yerinden ulaşılabilecek şekilde yüklenmesini sağlıyoruz."],
+            ["p","Yüklenme tamamlandığında Sass'e ilk adımımızı atmaya başlayabiliriz. Kod editörünüzü sass-test klasörü içinde açın ve 'testing.scss' adlı bir dosya oluşturun."],
+            ["h2","Değişkenler"],
+            ["p","Programlama dillerine aşinalığınız mevcut ise, değişkenler kavramına yabancılık çekmeyeceksinizdir. Değişkenler, en temel tanımıyla, değer taşıyıcılardır. Bir değeri bir değişkene atarsınız ve o değere ulaşmak istediğinizde değişkenleri kullanırsınız. Sass'te değişkenleri tanımlarken '$' işaretini değişken ismimizin başına getiriyoruz. Şimdi testing.scss dosyamızın içine şu kodları yazın:"],
+            ["code", `$g-white: ghostwhite;
+            
+aside {
+    background: $g-white;
+}`],
+            ["p","Burada ghostwhite rengini $g-white değişkenine atıyoruz. Böyle tek seferlik kullanımlar, size abesle iştigal ettiğimizi düşündürebilir, fakat, projenin bir noktasında bu rengi değiştirmek zorunda kaldığımız durumu zihninizde canlandırırsanız, değişkenlerin neden yararlı olduklarını anlayabilirsiniz. Kodumuzun içinde bu renk değerini arayarak teker teker değiştirmek yerine bir noktaya değişiklik uygulamamız yeterli olacak ve bu da bizim işimizi epeyce kolaylaştıracaktır."],
+            ["p", "Şimdi komut penceresini bu klasörün içinde açın ve aşağıdaki komutu girerek Enter'a basın."],
+            ["code",`sass testing.scss style.css`],
+            ["p","Komut sonuçlandığında testing.scss dosyası ile aynı klasör içinde style.css adlı bir dosya kendiliğinden oluşturulmuş olmalı. O dosyayı açtığınızda aside elementine uygulanan background niteliğinin değerini ghostwhite olarak göreceksiniz, yani normal bir CSS kodu ile karşılaşacaksınız."],
+            ["p", "Böylece ilk Sass kodunuzu yazıp CSS'e çevirmiş oldunuz. Tabii sürekli komut penceresine gidip dönüşüm için gerekli kodu yazmak bir noktadan sonra yorucu ve can sıkıcı olmaya başlayabilir. Bunun üstesinden gelmek için komutumuza ekstra bir opsiyon ekleyebiliriz:"],
+            ["code","sass --watch testing.scss style.css"],
+            ["p", "Bu komutu komut penceresine yazıp tıkladığınızda, Sass 'watch' modunda çalışmaya başlayacak, yani testing.scss dosyanızı her kaydedişinizde style.css dosyasını kendiliğinden güncelleyecek."],
+            ["p", "Değişkenler konu başlğının bir miktar dışına çıkıyor olsak da büyük olasılıkla işinize yarayabilecek olan birkaç komut örneği göstermek istiyorum. Mesela '.scss' uzantılı dosyalarınızı bir klasörde(sass-folder adlı klasör), CSS dosyalarınızı başka bir klasörde tutmak istiyorsunuz(styles adlı klasör):"],
+            ["code","sass --watch sass-folder\\main.scss styles\\style.css"],
+            ["p","Bu kodla söylediğimiz şey şu: sass-folder dosyasının içindeki main.scss dosyasını takibe al ve her değişiklikte styles dosyasının içindeki style.scss dosyasını güncelle."],
+            ["p","Zaman zaman birden fazla Sass dosyasını birden fazla CSS dosyasına yazdırmak isteyebilirsiniz. Aşağıdaki kod 'light.scss' adlı dosyayı 'light.css' dosyasına; 'dark.scss' adlı dosyayı 'dark.css' dosyasına dönüştürüyor"],
+            ["code","sass --watch light.scss:light.css dark.scss:dark.css"],
+            ["p","Bir klasörün(sass-folder) içindeki tüm Sass dosyalarını, aynı adlarını taşıyarak, bir CSS klasörüne(css) aktarmak:"],
+            ["code","sass --watch sass-folder:css"],
+            ["h2","Kontrol Yapıları"],
+            ["p","Yine programlama dillerine aşina olanların yabancılık çekmeyeceği kontrol yapıları Sass yardımıyla stil şemalarımıza geliyor. Bir kontrol yapısı, temel olarak, bir ifadenin uygulanıp uygulanmayacağına karar veren yapıdır."],
+            ["h3","@if"],
+            ["p","İlk kontrol yapımız @if. İfadelerin döndürdüğü Boolean değere(true veya false) endeksli olarak, seçili stil kurallarının uygulanıp uygulanmayacağına karar verir. Bu kontrol yapısıyla birlikte görebileceğimiz, eklenti niteliğindeki, bir diğer yapı ise @else yapısıdır. Akış @if kuralının kapsadığı ifadeye girmezse, @else bloğunun barındırdığı ifadeyi uygular."],
+            ["code",`$dark-mode: true;
+            
+@if $dark-mode {
+    background-color: black;
+    color: white;
+} @else {
+    background-color: white;
+    color: black;
+}`],
+            ["p", "Sadece iki muhtemel sonucun olmadığı akışlarda @else if kuralı yardımımıza koşuyor:"],
+            ["code", `$size: big;
+            
+@if $size == small {
+    font-size: 0.855rem;
+} @else if $size == medium {
+    font-size: 1.3rem;
+} @else if $size == big {
+    font-size: 2rem;
+} @else {
+    font-size: 1.5rem;
+}`],
+            ["p", "İlk @if kuralımızla akışımız başlayacak, buraya ve @else if bloklarından hiçbirine girilmezse, @else bloğuna girilecek."],
+            ["h3", "@each"],
+            ["p","@each kullanımını daha rahat anlamak için birbirine benzeyen birden fazla stil kuralı yazmanız gereken bir durumu gözünüzün önüne getirin. Bu stil kuralları birbirlerinden küçük farklılıklarla ayrışıyor olsunlar. Kopyala/Yapıştır/Değiştir tekniğini uygulamayı düşünüyor olabilirsiniz. İşte @each bunu sizin yerinize yapıyor ve sizi bir yükten kurtarıyor. Aşağıdaki kodları editörünüzde deneyin ve CSS sonuçlarını izleyerek ne olduğunu anlamaya çalışın."],
+            ["code",`$line-heights:(
+"small": 1.2,
+"madium": 1.4,
+"big": 1.6,
+);
+
+@each $name, $value in $line-heights {
+    .l-height-#{$name} {
+        line-height: $value;
+    }
+}`],
+                ["p","Bu Sass kodlarının dönüştüğü CSS kodu da aşağıda:"],
+                ["code", `.l-height-small {
+    line-height: 1.2;
+}
+
+.l-height-medium {
+    line-height: 1.4;
+}
+
+.l-height-big {
+    line-height: 1.6;
+}`],
+["h3","@for"],
+["p","Birden fazla birbirine benzeyen stil kuralı yazmamız gerekirse ve bu kurallar arasındaki farklılık düzenli şekilde artan sayılardan oluşuyorsa, en mantıklı seçenek @for bloğu kullanmaktır."],
+["code", `@for $i from 1 to 5 {
+    .m-#{$i} {
+        margin: #{$i}em;
+    }
+}`],
+            ["p","Yukarıda yazdığımız Sass kodunun CSS'e dönüştürülmüş hali:"],
+            ["code",`.m-1 {
+    margin: 1em;
+}
+
+.m-2 {
+    margin: 2em;
+}
+
+.m-3 {
+    margin: 3em;
+}
+
+.m-4 {
+    margin: 4em;
+}`],
+["p","Burada kullandığımız 'to' kelimesine dikkat edin. Sıralamamızın bir rakamından başlayıp dörtte sonlanmasının sebebi kendisi, oysa ki biz son rakam olarak beşi seçmiştik. Beşten önce durmayı değil de beşe kadar varmayı tercih edersek, 'through' kelimesini kullanmalıyız."],
+["h3", "@while"],
+["p","@while bloğu, @while ifadesi 'false' döndürene dek uygulanmaya devam eder. Birkaç tane özel durum haricinde @for ve @each ile aynı işlevi görür, performans açısından @for ve @each yapılarının kullanımı tercih edilmelidir."],
+["h2","Yararlı Diğer Yapılar"],
+            ["p", "Her ne kadar akış kontrol yapıları, stil kuralları yazma işimizi kolaylaştırsa da, daha karmaşık kuralları yazmamızı olanaklı hale getiren yapılara da değinmemizde fayda var."],
+            ["h3","@mixin"],
+            ["p","Elimizde belli bir stil şablonu olduğunu varsayalım ve biz bu şablonu, stil dosyamızın birden fazla noktasında kullanmak istiyoruz; @mixin bu durum için en uygun araçlardan bir tanesi. Üstelik, @mixin, aldığı argümanlara endeksli olarak farklı çıktılar yaratma yetisine sahip. Bu argümanlar, kullanım sırasında belirlenebileceği gibi, öntanımlı olarak da oluşturulabilir."],
+            ["p", "@mixin ile oluşturduğumuz şablonları stil kurallarımız içine yerleştirmek istediğimizde @include komutundan faydalanmak zorundayız. Daha önce değindiğimiz yapıları da kullanarak yaratacağımız bir örnekle her şeyi daha kolay anlayabiliriz:"],
+            ["code",`@mixin prefixIt($prop, $value, $vendors: ms webkit) {
+    @each $vendor in $vendors {
+        -#{$vendor}-#{$prop}: $value;
+    }
+    #{$prop}: $value;
+}
+
+div {
+    @include prefixIt(transform, transitionX(100px), ms moz webkit);
+}`],
+            ["p", "Bu Sass kodlarının CSS'e dönüştürülmüş hali:"],
+            ["code",`div {
+    -ms-transform: transitionX(100px);
+    -moz-transform: transitionX(100px);
+    -webkit-transform: transitionX(100px);
+    transform: transitionX(100px);
+}`],
+            ["p","Zaman zaman @mixin ifademize birden fazla argüman vermek isteyebiliriz. Bunu '...' ile yapabiliyoruz."],
+            ["code",`@mixin order($height, $selectors...) {
+    @for $i from 0 to length($selectors) {
+        @if $i == 0 {
+            #{nth($selectors, $i + 1)} {
+                position: absolute;
+                height: $height;
+                margin-top: 0;
+            }
+        } @else {
+            #{nth($selectors, $i + 1)} {
+                position: absolute;
+                height: $height;
+                margin-top: $i * $height;
+            }
+        }
+    }
+}
+
+@include order(140px, ".box-1", ".box-2",);`],
+            ["p","CSS versiyonu:"],
+            ["code",`.box-1 {
+    position: absolute;
+    height: 140px;
+    margin-top: 0;
+}
+
+.box-2 {
+    position: absolute;
+    height: 140px;
+    margin-top: 140px;
+}`],
+            ["h3","@extend"],
+            ["p","@mixin kullanımına benzer bir kullanımı olan ve sıklıkla kafa karıştıran @extend yapısı, bir stil kuralının içindeyken bir başka stil kuralını kopyalamamızı olanaklı kılıyor."],
+            ["code", `%btn{
+    padding: .5em 1em;
+    border: none;
+}
+
+.btn-danger {
+    @extend %btn;
+    background-color: crimson;
+    color: ghostwhite;
+}
+
+.btn-info {
+    @extend %btn;
+    background-color: deepskyblue;
+    color: #000;
+}`],
+            ["p", "CSS'e dönüştürülmüs hali:"],
+            ["code",`.btn-info, .btn-danger {
+    padding: 0.5em 1em;
+    border: none;
+}
+
+.btn-danger {
+    background-color: crimson;
+    color: ghostwhite;
+}
+
+.btn-info {
+    background-color: deepskyblue;
+    color: #000;
+}`],
+            ["p", "'%' işareti, yazdığımız stil kuralının yalnızca şablon olma amacıyla orada bulunduğunu belirtiyor. Dikkat ederseniz CSS kodlarımız arasında o kod bloğu bulunmuyor."],
+            ["h2", "Functions"],
+            ["p","Stil şablonlarını belirli yerlerde kullanmak ve argümanlara bağımlı olarak farklı farklı çıktılar elde etmekten daha karmaşık işlemler gerçekleştirmek istediğimizde fonksiyonları kullanıyoruz. 'mixin'lerle ne farkı var diye soruyor olabilirsiniz: Çoğunlukla ikisi birbiririnin yerine kullanılabilir, ancak tavsiye edilen kullanım şekli; fonksiyonların değer hesaplamalarında, 'mixin'lerin de stil şablonu yerleştirme amacıyla kullanılmasıdır."],
+            ["p","Fonksiyonlar '@function' kelimesi başa getirilerek tanımlanıyorlar. Daha önce değindiğimiz konuların bazılarını da kullandığımız bir örnek:"],
+            ["code",`$bodyBg: #343434;
+$divBg: #cdcdcd;
+
+@function contrastColor($bgcolor) {
+    @if(lightness($bgcolor) < 45%) {
+    @return ghostwhite;
+    }
+    @return #222;
+}
+
+body{
+    background: $bodyBg;
+    color: contrastColor($bodyBg);
+}
+
+div{
+    background: $divBg;
+    color: contrastColor($divBg);
+}`],
+            ["p","Önce iki değişken oluşturduk, daha sonra koşul bloğumuzu kullanarak bize verilecek olan arka plan rengine göre metin rengimizi döndürdük. CSS'e dönüştürülmüş hâli:"],
+            ["code", `body {
+    background: #343434;
+    color: ghostwhite;
+}
+
+div {
+    background: #cdcdcd;
+    color: #222;
+}`],
+            ["p","Yer yer fonksiyonlarımıza belli olmayan bir sayıda argüman vermemiz gerekebilir. Bu gibi durumlarda '...' kullandığımızı söylemiştik. Böylece fonksiyonumuza bir argüman listesi vermiş oluyoruz."],
+            ["code",`@function sum($nums...) {
+    $sum: 0;
+    @each $num in $nums {
+        $sum: $sum + $num;
+    }
+    @return $sum;
+}
+
+.box {
+    width: sum(100px, 40px, 20px);
+}`],
+            ["p", "CSS'e dönüştürülmüş hâli:"],
+            ["code", `.box {
+    width: 160px;
+}`]
+        ]
+        ),
+    //     {
+        //         title: "Html5 ve Css3 - Giriş",
+        //         tags: ["html", "html5", "css3","css", "web tasarım", "web kodlama", "mark-up"],
+        //         postId: 209,
 //         img: "./img/html5.svg",
 //         userId: 12,
 //         body: "vurulmuş gar devinim cellat cümle kodlama haram karlı küçüksün acılar yoksulluk gönül yalnızlık ambar yaren mektup web koklamadım beni ziyan dosyamızı para tarkovsky tasarım dert cümle senden şefim amacıyla çehov ambar adı oha yük mor hicranlar hani zarf haram yoksulluk güfte neler hani gülüm ölemezsin çayır hangar şefim senden virane doğa ana giyemezsin nasıl kelime çatı rastgele tarkovsky nuri bilge ceylan çatı açalım tarkovsky kamusal mizah gülüm çayır adı web arkadaş yavru koklamadım rindane nuri bilge ceylan deva çehov ambar virane yakarış koklamadım devinim web leylek mektup ambar çatır çutur amacıyla tümce uçurtma kırgınmış senden temel yavru bile cümle kefen virane yaren hane cellat gülüm hane çikolata giyemezsin temel ambar uçuyor sözcük doğa ana senden çanak hane sümbül hangar dert kelime vurulmuş acılar arkadaş kelime rastgele çehov dert sözcük giyemezsin mektup acılar çikolata arkadaş ziyan omuz ölemezsin çatı leylek hangar türkülerle dert hayran ölemezsin bile cellat çanak sözlük çatır çutur senden temel cellat amacıyla yağmurla sözlük çeşme web tarkovsky haram istesen de yaren gittim yaren programlama rastgele programlama şarkı çömlek doğa dayı yavru hayran istesen de hayran kelime rastgele yavru devinim sümbül rindane oha dert web çikolata yalnızlık leylek nuri bilge ceylan bile para seher yeli mektup gülüm sümbül yavru şarkı zarf kırgınmış kırgınmış uçurum temel arkadaş ölemezsin yakarış ölemezsin rastgele deva ambar ambar cümle temel çikolata web nasıl rastgele şefim hayran senden karlı koklamadım doğa ana aman uçurum uçurtma açalım yük uçurum cümle uçurum aman dosyamızı yavru neler tümce bilinen gülüm hani mektup gar aman hangar uçuyor türkülerle gönül istesen de aman yalnızlık tarkovsky çeşme koklamadım gittim gülüm para güfte cellat leylek giyemezsin çatı mektup hani sözcük çanak tasarım şarkı dert çeşme virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği şefim devinim güfte gönül bilinen acılar şefim hayran tasarım devinim hani uçuyor oha mektup açalım ölemezsin beni hani bilinen doğa ana öpücük böceği sümbül uçurtma rastgele bilinen dert açalım güfte nasıl koklamadım deva hangar uçurum yavru çanak doğa dayı istesen de çeşme adı tarkovsky mektup çeşme karlı ziyan istesen de yalnızlık sözcük gittim tarkovsky nasıl şefim kefen yavru küçüksün kefen kelime programlama yağmurla yağmurla uçurtma dert doğa dayı kefen senden açalım hayran küçüksün çikolata gönül yakarış şarkı nasıl tümce temel dert uçurtma çikolata dosyamızı leylek uçurtma omuz çanak karlı konuşmadım meslek kelime haram programlama senden doğa dayı web zarf dert çanak yaren güfte hane çatır çutur bilinen aman konuşmadım çömlek dert gülüm dosyamızı beni adı yavru yük doğa dayı açalım kefen gittim sözlük yakarış tümce bilinen acılar çehov sözlük sözcük türkülerle şarkı çanak gar şefim çayır para mektup programlama uçuyor çehov beni doğa dayı dert tasarım beni oha çatır çutur gar aman yaren oha deva doğa baba bilinen yalnızlık virane koklamadım virane temel güfte kamusal mizah şarkı nasıl koklamadım ziyan istesen de bile gönül hangar yoksulluk çanak doğa baba gönül mektup programlama uçurtma koklamadım arkadaş arkadaş sümbül küçüksün para yakarış çatı hangar karlı şefim omuz yalnızlık dert web deva nuri bilge ceylan sözlük çeşme uçurum yağmurla cellat kodlama tasarım para kırgınmış dert nasıl meslek şarkı vurulmuş doğa baba cümle para kefen gittim yük kelime çayır nasıl programlama çehov kamusal mizah kefen çömlek yakarış çatır çutur sözcük seher yeli çehov amacıyla mektup şefim doğa dayı haram sözlük karlı çehov yoksulluk kamusal mizah çeşme tümce aman hayran gar koklamadım doğa dayı tarkovsky gönül adı çikolata rastgele hayran şarkı çömlek tasarım rastgele dosyamızı türkülerle nuri bilge ceylan güfte tarkovsky çanak yakarış sözlük hani yük istesen de yalnızlık sözcük türkülerle koklamadım türkülerle çeşme vurulmuş cümle yavru istesen de güfte hani zarf hayran çikolata aman gar kamusal mizah doğa ana rindane web leylek para tümce yalnızlık neler temel yağmurla istesen de aman gülüm bilinen ambar tümce omuz yoksulluk şarkı çatır çutur gar uçurum tarkovsky doğa dayı vurulmuş temel seher yeli istesen de haram seher yeli bilinen kefen şefim çömlek para şefim doğa dayı doğa dayı konuşmadım türkülerle kodlama web yük meslek temel tasarım istesen de çatır çutur para koklamadım bile öpücük böceği rastgele virane cellat hane leylek hani senden zarf dosyamızı kamusal mizah neler yavru hane cellat dosyamızı web çanak gülüm uçuyor uçurtma açalım kamusal mizah oha yakarış ölemezsin oha programlama omuz temel cümle ölemezsin kırgınmış nasıl gar beni yavru çeşme hayran virane çehov çatı çatı bilinen öpücük böceği kefen dosyamızı deva ziyan sözcük omuz sözlük hayran hane yalnızlık türkülerle yağmurla gülüm mektup hane açalım çömlek cellat devinim kelime mor hicranlar hane gülüm gittim yük hayran web senden temel oha çatır çutur çanak çömlek yük aman kamusal mizah virane gülüm rindane açalım sümbül gittim para ölemezsin güfte öpücük böceği arkadaş güfte amacıyla kodlama oha nasıl gar mor hicranlar hangar koklamadım hangar bile şarkı şefim çehov çehov giyemezsin uçurum tümce mor hicranlar gittim kırgınmış uçurtma tren açalım programlama türkülerle ambar para yük ziyan ölemezsin konuşmadım adı hane ölemezsin çayır nuri bilge ceylan hayran tren türkülerle tarkovsky amacıyla sümbül ölemezsin karlı sözcük kelime öpücük böceği yavru doğa ana sözcük ölemezsin hane yağmurla çayır gönül çeşme seher yeli açalım koklamadım çanak beni dosyamızı çikolata kelime amacıyla giyemezsin kefen çömlek seher yeli cellat bile gönül tasarım çehov koklamadım öpücük böceği beni dert yavru dert çehov web yalnızlık tarkovsky kırgınmış haram öpücük böceği mor hicranlar vurulmuş adı adı leylek küçüksün cellat para açalım kelime hani amacıyla tarkovsky küçüksün kamusal mizah koklamadım para cümle deva seher yeli koklamadım oha açalım doğa dayı yük gönül senden çanak çanak giyemezsin leylek karlı konuşmadım yağmurla yağmurla gar vurulmuş gittim ölemezsin cellat para giyemezsin çatır çutur haram tren leylek çayır tren doğa baba tarkovsky yakarış uçurtma neler dosyamızı doğa dayı para senden dosyamızı cümle omuz hayran çatı çatı konuşmadım çehov aman koklamadım beni yoksulluk cümle giyemezsin koklamadım. vurulmuş gar devinim cellat cümle kodlama haram karlı küçüksün acılar yoksulluk gönül yalnızlık ambar yaren mektup web koklamadım beni ziyan dosyamızı para tarkovsky tasarım dert cümle senden şefim amacıyla çehov ambar adı oha yük mor hicranlar hani zarf haram yoksulluk güfte neler hani gülüm ölemezsin çayır hangar şefim senden virane doğa ana giyemezsin nasıl kelime çatı rastgele tarkovsky nuri bilge ceylan çatı açalım tarkovsky kamusal mizah gülüm çayır adı web arkadaş yavru koklamadım rindane nuri bilge ceylan deva çehov ambar virane yakarış koklamadım devinim web leylek mektup ambar çatır çutur amacıyla tümce uçurtma kırgınmış senden temel yavru bile cümle kefen virane yaren hane cellat gülüm hane çikolata giyemezsin temel ambar uçuyor sözcük doğa ana senden çanak hane sümbül hangar dert kelime vurulmuş acılar arkadaş kelime rastgele çehov dert sözcük giyemezsin mektup acılar çikolata arkadaş ziyan omuz ölemezsin çatı leylek hangar türkülerle dert hayran ölemezsin bile cellat çanak sözlük çatır çutur senden temel cellat amacıyla yağmurla sözlük çeşme web tarkovsky haram istesen de yaren gittim yaren programlama rastgele programlama şarkı çömlek doğa dayı yavru hayran istesen de hayran kelime rastgele yavru devinim sümbül rindane oha dert web çikolata yalnızlık leylek nuri bilge ceylan bile para seher yeli mektup gülüm sümbül yavru şarkı zarf kırgınmış kırgınmış uçurum temel arkadaş ölemezsin yakarış ölemezsin rastgele deva ambar ambar cümle temel çikolata web nasıl rastgele şefim hayran senden karlı koklamadım doğa ana aman uçurum uçurtma açalım yük uçurum cümle uçurum aman dosyamızı yavru neler tümce bilinen gülüm hani mektup gar aman hangar uçuyor türkülerle gönül istesen de aman yalnızlık tarkovsky çeşme koklamadım gittim gülüm para güfte cellat leylek giyemezsin çatı mektup hani sözcük çanak tasarım şarkı dert çeşme virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği şefim devinim güfte gönül bilinen acılar şefim hayran tasarım devinim hani uçuyor oha mektup açalım ölemezsin beni hani bilinen doğa ana öpücük böceği sümbül uçurtma rastgele bilinen dert açalım güfte nasıl koklamadım deva hangar uçurum yavru çanak doğa dayı istesen de çeşme adı tarkovsky mektup çeşme karlı ziyan istesen de yalnızlık sözcük gittim tarkovsky nasıl şefim kefen yavru küçüksün kefen kelime programlama yağmurla yağmurla uçurtma dert doğa dayı kefen senden açalım hayran küçüksün çikolata gönül yakarış şarkı nasıl tümce temel dert uçurtma çikolata dosyamızı leylek uçurtma omuz çanak karlı konuşmadım meslek kelime haram programlama senden doğa dayı web zarf dert çanak yaren güfte hane çatır çutur bilinen aman konuşmadım çömlek dert gülüm dosyamızı beni adı yavru yük doğa dayı açalım kefen gittim sözlük yakarış tümce bilinen acılar çehov sözlük sözcük türkülerle şarkı çanak gar şefim çayır para mektup programlama uçuyor çehov beni doğa dayı dert tasarım beni oha çatır çutur gar aman yaren oha deva doğa baba bilinen yalnızlık virane koklamadım virane temel güfte kamusal mizah şarkı nasıl koklamadım ziyan istesen de bile gönül hangar yoksulluk çanak doğa baba gönül mektup programlama uçurtma koklamadım arkadaş arkadaş sümbül küçüksün para yakarış çatı hangar karlı şefim omuz yalnızlık dert web deva nuri bilge ceylan sözlük çeşme uçurum yağmurla cellat kodlama tasarım para kırgınmış dert nasıl meslek şarkı vurulmuş doğa baba cümle para kefen gittim yük kelime çayır nasıl programlama çehov kamusal mizah kefen çömlek yakarış çatır çutur sözcük seher yeli çehov amacıyla mektup şefim doğa dayı haram sözlük karlı çehov yoksulluk kamusal mizah çeşme tümce aman hayran gar koklamadım doğa dayı tarkovsky gönül adı çikolata rastgele hayran şarkı çömlek tasarım rastgele dosyamızı türkülerle nuri bilge ceylan güfte tarkovsky çanak yakarış sözlük hani yük istesen de yalnızlık sözcük türkülerle koklamadım türkülerle çeşme vurulmuş cümle yavru istesen de güfte hani zarf hayran çikolata aman gar kamusal mizah doğa ana rindane web leylek para tümce yalnızlık neler temel yağmurla istesen de aman gülüm bilinen ambar tümce omuz yoksulluk şarkı çatır çutur gar uçurum tarkovsky doğa dayı vurulmuş temel seher yeli istesen de haram seher yeli bilinen kefen şefim çömlek para şefim doğa dayı doğa dayı konuşmadım türkülerle kodlama web yük meslek temel tasarım istesen de çatır çutur para koklamadım bile öpücük böceği rastgele virane cellat hane leylek hani senden zarf dosyamızı kamusal mizah neler yavru hane cellat dosyamızı web çanak gülüm uçuyor uçurtma açalım kamusal mizah oha yakarış ölemezsin oha programlama omuz temel cümle ölemezsin kırgınmış nasıl gar beni yavru çeşme hayran virane çehov çatı çatı bilinen öpücük böceği kefen dosyamızı deva ziyan sözcük omuz sözlük hayran hane yalnızlık türkülerle yağmurla gülüm mektup hane açalım çömlek cellat devinim kelime mor hicranlar hane gülüm gittim yük hayran web senden temel oha çatır çutur çanak çömlek yük aman kamusal mizah virane gülüm rindane açalım sümbül gittim para ölemezsin güfte öpücük böceği arkadaş güfte amacıyla kodlama oha nasıl gar mor hicranlar hangar koklamadım hangar bile şarkı şefim çehov çehov giyemezsin uçurum tümce mor hicranlar gittim kırgınmış uçurtma tren açalım programlama türkülerle ambar para yük ziyan ölemezsin konuşmadım adı hane ölemezsin çayır nuri bilge ceylan hayran tren türkülerle tarkovsky amacıyla sümbül ölemezsin karlı sözcük kelime öpücük böceği yavru doğa ana sözcük ölemezsin hane yağmurla çayır gönül çeşme seher yeli açalım koklamadım çanak beni dosyamızı çikolata kelime amacıyla giyemezsin kefen çömlek seher yeli cellat bile gönül tasarım çehov koklamadım öpücük böceği beni dert yavru dert çehov web yalnızlık tarkovsky kırgınmış haram öpücük böceği mor hicranlar vurulmuş adı adı leylek küçüksün cellat para açalım kelime hani amacıyla tarkovsky küçüksün kamusal mizah koklamadım para cümle deva seher yeli koklamadım oha açalım doğa dayı yük gönül senden çanak çanak giyemezsin leylek karlı konuşmadım yağmurla yağmurla gar vurulmuş gittim ölemezsin cellat para giyemezsin çatır çutur haram tren leylek çayır tren doğa baba tarkovsky yakarış uçurtma neler dosyamızı doğa dayı para senden dosyamızı cümle omuz hayran çatı çatı konuşmadım çehov aman koklamadım beni yoksulluk cümle giyemezsin koklamadım"
@@ -127,14 +376,12 @@ export const posts = [
 //         userId: 12,
 //         body:"rindane kefen çikolata oha gar web sözlük karlı meslek ambar küçüksün haram tümce şefim çatı temel oha açalım çanak konuşmadım dosyamızı hangar omuz para uçurum zarf meslek omuz neler adı doğa baba tümce tasarım nasıl web çömlek gittim meslek karlı acılar açalım hani istesen de zarf çeşme sözlük yağmurla tren programlama çatır çutur adı leylek hayran gittim çeşme doğa ana öpücük böceği hangar sözcük koklamadım kefen yağmurla acılar tümce vurulmuş ambar dert gülüm oha çanak çatır çutur tümce ziyan hane mektup mor hicranlar senden küçüksün gittim küçüksün kamusal mizah çeşme cellat tren yağmurla sümbül gülüm omuz arkadaş konuşmadım ölemezsin mor hicranlar gülüm yük doğa ana gittim cümle temel çömlek şarkı mor hicranlar şefim aman yalnızlık hane gülüm devinim çömlek yakarış tren deva uçurum gar ölemezsin temel para web seher yeli dosyamızı meslek yoksulluk ambar uçurum vurulmuş doğa baba sümbül mor hicranlar yağmurla kamusal mizah türkülerle yaren nasıl dert yoksulluk senden yağmurla arkadaş çömlek hane sözlük omuz aman açalım dosyamızı cellat hani virane senden çatı konuşmadım kelime arkadaş uçurum leylek ambar yalnızlık karlı sümbül gittim gönül web leylek web neler giyemezsin gar çanak amacıyla hane amacıyla acılar dert tarkovsky tarkovsky nasıl haram çikolata doğa baba hane haram çatı gülüm sümbül kelime tümce tren hani tren adı web dert bilinen uçurtma dosyamızı acılar çayır oha yavru zarf açalım devinim yakarış senden nasıl doğa baba bilinen açalım çömlek tümce zarf hane tümce kırgınmış kodlama hayran tren devinim aman şefim hangar gar uçurtma zarf doğa dayı cellat kefen rastgele kodlama yakarış gönül bile rastgele yoksulluk adı yoksulluk doğa baba doğa ana istesen de virane hayran hayran yalnızlık oha adı hane konuşmadım ziyan uçuyor ölemezsin açalım mektup uçurtma web acılar yakarış meslek kodlama konuşmadım senden yakarış vurulmuş çayır aman uçurum şefim kırgınmış çanak hani programlama konuşmadım aman çanak rastgele öpücük böceği devinim rindane karlı istesen de çehov bilinen çehov yoksulluk meslek ölemezsin vurulmuş amacıyla öpücük böceği gülüm adı senden vurulmuş amacıyla çatır çutur mor hicranlar yük virane acılar kodlama cümle vurulmuş deva tümce uçurtma devinim tarkovsky vurulmuş seher yeli dert bile sümbül temel para hani türkülerle şefim ambar öpücük böceği giyemezsin çömlek çikolata uçurum seher yeli para tasarım meslek yoksulluk gönül çehov beni kamusal mizah kamusal mizah nuri bilge ceylan karlı seher yeli vurulmuş senden rindane karlı temel öpücük böceği kodlama cellat leylek küçüksün ambar kelime bilinen türkülerle vurulmuş dert küçüksün seher yeli konuşmadım gönül nasıl oha temel deva yavru acılar neler programlama doğa ana bile deva doğa dayı sözlük amacıyla virane para tümce ölemezsin yaren şefim rastgele çatır çutur uçurtma öpücük böceği leylek uçuyor yük istesen de senden yakarış istesen de çehov temel mektup öpücük böceği karlı çeşme türkülerle virane aman gittim aman sümbül cellat uçurum bilinen giyemezsin hane beni istesen de tasarım acılar kodlama web temel sözlük mektup gittim tren açalım meslek çikolata deva şarkı çanak doğa ana "
 //     },
-//     {
-//         title: "Tasarım planlaması",
-//         tags: ["photoshop", "tasarım", "UI", "veri tabanı", "web tasarım"],
-//         postId: 841,
-//         img: "./img/adobe.svg",
-//         userId: 14, 
-//         body: "rindane gar kelime leylek dert koklamadım şefim bile uçurtma programlama zarf mektup leylek hayran dosyamızı mektup rastgele seher yeli koklamadım meslek kırgınmış yalnızlık nasıl cellat web istesen de meslek kodlama çanak şefim aman tasarım web beni mektup tasarım hangar deva dosyamızı şefim deva vurulmuş şefim hane çanak zarf konuşmadım sözcük çeşme yavru rastgele kelime uçurtma kırgınmış çeşme dosyamızı beni tarkovsky bile kamusal mizah dosyamızı zarf sözcük bilinen çikolata uçurtma programlama hangar gar hangar bile kefen adı rastgele vurulmuş leylek bile hani programlama haram seher yeli uçurum yakarış hayran çömlek uçuyor mektup hayran gittim hani doğa ana gittim doğa dayı hayran şefim uçurtma senden hane kefen beni doğa ana rastgele hane gülüm senden konuşmadım uçurtma neler vurulmuş gittim tasarım uçuyor sözcük vurulmuş doğa dayı hani gönül yakarış sözlük uçuyor kelime programlama hani haram çanak rastgele mektup yoksulluk seher yeli konuşmadım amacıyla web mor hicranlar sözlük leylek çömlek meslek çehov amacıyla çanak virane doğa dayı seher yeli doğa dayı koklamadım beni meslek haram ambar cümle para rastgele cellat cellat açalım doğa dayı sözlük sümbül omuz gülüm neler çatı çömlek yük seher yeli cellat türkülerle temel yavru omuz senden istesen de yoksulluk tasarım tarkovsky yoksulluk meslek amacıyla vurulmuş çömlek sözcük bilinen omuz beni arkadaş dosyamızı doğa dayı seher yeli kamusal mizah yağmurla ziyan seher yeli sözlük istesen de çanak şarkı çayır bile açalım yaren gar temel adı doğa baba mor hicranlar cellat tümce yavru kodlama senden yağmurla çanak koklamadım amacıyla seher yeli çatır çutur cümle yavru gar sözlük uçurum senden neler çatır çutur dosyamızı omuz sümbül devinim virane doğa ana tasarım açalım adı hayran tümce kefen kelime bilinen karlı nuri bilge ceylan tümce yük koklamadım adı hane yakarış şarkı virane ambar leylek ölemezsin çikolata güfte programlama tasarım omuz küçüksün kırgınmış hane beni karlı haram adı karlı güfte programlama bile haram ambar hani gönül ambar para konuşmadım sözlük mektup ölemezsin hani para " 
-//     },
+        new Post("Tasarım Planlaması",
+                 ["photoshop", "tasarım", "UI", "veri tabanı", "web tasarım"],
+                 841,
+                 "./img/adobe.svg",
+                 14,
+                 [["p", "rindane gar kelime leylek dert koklamadım şefim bile uçurtma programlama zarf mektup leylek hayran dosyamızı mektup rastgele seher yeli koklamadım meslek kırgınmış yalnızlık nasıl cellat web istesen de meslek kodlama çanak şefim aman tasarım web beni mektup tasarım hangar deva dosyamızı şefim deva vurulmuş şefim hane çanak zarf konuşmadım sözcük çeşme yavru rastgele kelime uçurtma kırgınmış çeşme dosyamızı beni tarkovsky bile kamusal mizah dosyamızı zarf sözcük bilinen çikolata uçurtma programlama hangar gar hangar bile kefen adı rastgele vurulmuş leylek bile hani programlama haram seher yeli uçurum yakarış hayran çömlek uçuyor mektup hayran gittim hani doğa ana gittim doğa dayı hayran şefim uçurtma senden hane kefen beni doğa ana rastgele hane gülüm senden konuşmadım uçurtma neler vurulmuş gittim tasarım uçuyor sözcük vurulmuş doğa dayı hani gönül yakarış sözlük uçuyor kelime programlama hani haram çanak rastgele mektup yoksulluk seher yeli konuşmadım amacıyla web mor hicranlar sözlük leylek çömlek meslek çehov amacıyla çanak virane doğa dayı seher yeli doğa dayı koklamadım beni meslek haram ambar cümle para rastgele cellat cellat açalım doğa dayı sözlük sümbül omuz gülüm neler çatı çömlek yük seher yeli cellat türkülerle temel yavru omuz senden istesen de yoksulluk tasarım tarkovsky yoksulluk meslek amacıyla vurulmuş çömlek sözcük bilinen omuz beni arkadaş dosyamızı doğa dayı seher yeli kamusal mizah yağmurla ziyan seher yeli sözlük istesen de çanak şarkı çayır bile açalım yaren gar temel adı doğa baba mor hicranlar cellat tümce yavru kodlama senden yağmurla çanak koklamadım amacıyla seher yeli çatır çutur cümle yavru gar sözlük uçurum senden neler çatır çutur dosyamızı omuz sümbül devinim virane doğa ana tasarım açalım adı hayran tümce kefen kelime bilinen karlı nuri bilge ceylan tümce yük koklamadım adı hane yakarış şarkı virane ambar leylek ölemezsin çikolata güfte programlama tasarım omuz küçüksün kırgınmış hane beni karlı haram adı karlı güfte programlama bile haram ambar hani gönül ambar para konuşmadım sözlük mektup ölemezsin hani para..."]]),
 //     {
 //         title: "SEO nedir ve Neden Önemlidir",
 //         tags: ["seo","html5", "optimizasyon", "arama motorları", "google"],
@@ -143,14 +390,14 @@ export const posts = [
 //         userId: 12,  
 //         body:"haram doğa baba tren temel deva istesen de rastgele bile oha amacıyla uçurum cümle cellat yavru adı deva yalnızlık yavru dosyamızı vurulmuş yoksulluk nuri bilge ceylan devinim yoksulluk çanak çatı doğa ana gönül temel çeşme gülüm kelime dert deva kelime dosyamızı güfte çanak şarkı leylek doğa dayı dosyamızı omuz mektup rindane çatı karlı uçurum kodlama ambar aman rastgele karlı nasıl tümce yaren doğa baba çömlek aman doğa ana kefen yakarış arkadaş gülüm kırgınmış dosyamızı arkadaş mektup gar istesen de gönül arkadaş cellat kefen çatı ambar adı küçüksün koklamadım leylek tren gülüm uçurtma beni omuz para sözcük neler para uçurtma yük tarkovsky şarkı bile çikolata hani tarkovsky giyemezsin kelime vurulmuş zarf çatır çutur haram ölemezsin sümbül uçuyor çatır çutur bile gittim çehov meslek açalım açalım uçurtma rastgele vurulmuş çatı sözcük çatı yavru uçuyor karlı bilinen kırgınmış programlama mor hicranlar küçüksün ambar gittim gittim cümle rastgele tarkovsky ambar bile açalım hangar aman cellat yakarış arkadaş istesen de sözlük tasarım oha cellat uçuyor dert koklamadım sözcük omuz cümle kırgınmış hangar bile beni hani çatır çutur uçurtma mor hicranlar çatır çutur küçüksün devinim zarf kodlama doğa ana kamusal mizah uçuyor istesen de tarkovsky yavru dosyamızı mor hicranlar leylek vurulmuş deva öpücük böceği hangar arkadaş virane cellat gittim tren hani ziyan öpücük böceği sözcük uçurtma ziyan sümbül istesen de ziyan güfte temel ölemezsin gar leylek bile sümbül adı acılar karlı beni şefim cellat senden küçüksün çehov meslek acılar rindane ambar kamusal mizah cellat öpücük böceği koklamadım giyemezsin cümle hangar beni şarkı beni kırgınmış aman türkülerle meslek yağmurla cümle gülüm uçurum senden sözlük sümbül tarkovsky istesen de dert devinim çikolata amacıyla nuri bilge ceylan giyemezsin yağmurla bilinen oha cümle mor hicranlar virane ölemezsin meslek tren istesen de tasarım haram yalnızlık sözcük oha yoksulluk adı web doğa ana küçüksün tasarım sümbül para meslek çatı kırgınmış yaren çikolata yalnızlık neler omuz cümle tren kodlama tümce yaren gönül rindane çatır çutur bile çikolata güfte bile temel neler yakarış giyemezsin haram mor hicranlar dosyamızı yavru mektup tren uçurtma çanak meslek tasarım uçurum dert doğa baba meslek gülüm devinim çeşme kamusal mizah yakarış yük ziyan güfte uçurtma çömlek hangar programlama çatı yağmurla oha aman leylek arkadaş yağmurla doğa baba uçurtma dert kefen giyemezsin meslek rastgele para nasıl güfte güfte istesen de tarkovsky amacıyla gönül gar açalım mor hicranlar leylek virane çikolata kodlama neler yalnızlık tren adı istesen de şarkı ambar sözcük aman ziyan giyemezsin gittim rastgele vurulmuş yalnızlık devinim devinim ölemezsin açalım gülüm hangar uçuyor doğa ana ziyan dosyamızı uçuyor çatı çehov çikolata uçuyor bile bile karlı dert amacıyla gar öpücük böceği tarkovsky aman çatı virane kelime gar nasıl sümbül hayran tarkovsky meslek mektup yaren deva yaren hane çömlek giyemezsin yük ziyan kırgınmış meslek giyemezsin tarkovsky nasıl gar cümle öpücük böceği vurulmuş mor hicranlar kamusal mizah türkülerle istesen de şarkı neler açalım konuşmadım programlama gar acılar çatı senden meslek şarkı sözlük yoksulluk hani acılar arkadaş ölemezsin beni haram zarf bile zarf doğa ana hani yaren gittim rindane yük ambar doğa dayı uçuyor ziyan çanak web kamusal mizah küçüksün mor hicranlar zarf bile çatı gönül istesen de web rindane giyemezsin kelime konuşmadım konuşmadım neler yoksulluk rindane web uçurum hane çatır çutur zarf programlama dert vurulmuş uçuyor nasıl vurulmuş neler konuşmadım hane leylek karlı gittim karlı web aman çanak mor hicranlar sümbül ölemezsin tasarım rindane tarkovsky kırgınmış hane oha şefim acılar hayran istesen de para bile gittim tren ölemezsin koklamadım gülüm hayran haram meslek ölemezsin doğa ana zarf sözcük çehov amacıyla leylek konuşmadım çayır programlama şarkı istesen de çömlek gar şarkı çanak yağmurla doğa baba cümle bile rindane gönül virane ölemezsin kelime çanak devinim adı devinim meslek küçüksün çehov tümce tren kamusal mizah nasıl gülüm tasarım kefen oha uçurtma yakarış hane uçuyor doğa baba neler kırgınmış aman doğa baba leylek hayran şefim sümbül çehov hani hane yaren dosyamızı şarkı yük devinim sözcük çatı ziyan dosyamızı virane çömlek öpücük böceği oha gülüm gülüm web "
 //     },
-//     {
-//         title: "Adobe Photoshop - Giriş",
-//         tags: ["photoshop", "tasarım", "UI", "adobe", "web tasarım"],
-//         postId: 842,
-//         img:"./img/adobe.svg",
-//         userId: 14,
-//         body: "leylek hangar ambar çayır hangar seher yeli mor hicranlar kodlama yakarış tarkovsky çehov uçuyor çatı çömlek bile sözcük dert çatı doğa baba çehov vurulmuş hayran doğa ana yakarış deva gar omuz çatı tasarım gar çatır çutur kodlama doğa dayı hane çömlek adı hani ambar devinim virane kefen neler yalnızlık giyemezsin nuri bilge ceylan yoksulluk nuri bilge ceylan yavru nasıl seher yeli çömlek çikolata ölemezsin ziyan çeşme beni leylek mor hicranlar doğa dayı meslek çehov sümbül şefim yoksulluk programlama konuşmadım doğa dayı türkülerle yalnızlık para gülüm şarkı vurulmuş beni kefen meslek haram web adı şarkı çehov gittim cümle rindane açalım açalım mor hicranlar küçüksün leylek yaren tümce konuşmadım dosyamızı acılar çehov doğa ana açalım zarf senden yük bilinen omuz rastgele yağmurla yağmurla doğa baba temel devinim sözlük güfte hangar bilinen vurulmuş yağmurla meslek temel cümle yük hane nasıl rindane nasıl gar arkadaş çömlek adı sözlük sümbül web meslek virane devinim nuri bilge ceylan karlı dosyamızı gittim dert yağmurla nuri bilge ceylan kamusal mizah gittim uçurum hane çatı web şarkı kelime şarkı doğa ana tarkovsky sözlük tarkovsky doğa dayı haram yoksulluk kamusal mizah yalnızlık uçuyor koklamadım kamusal mizah hayran leylek aman uçurtma seher yeli kodlama mektup acılar yaren çatı yağmurla haram yavru rindane güfte şefim cümle kelime bilinen gittim omuz yağmurla nasıl uçurum tümce arkadaş sözcük yoksulluk ziyan karlı meslek deva giyemezsin temel tarkovsky yalnızlık doğa ana doğa baba dert gülüm cellat programlama dert senden konuşmadım bile sümbül tümce dert tümce çatır çutur sözcük türkülerle hane haram yoksulluk kelime çeşme acılar ölemezsin aman rastgele çikolata beni leylek arkadaş kefen türkülerle acılar gönül dosyamızı deva gar açalım çayır para çatır çutur mor hicranlar kefen yalnızlık haram amacıyla omuz çayır öpücük böceği temel omuz gar çeşme çehov gar mor hicranlar güfte istesen de tren bile dosyamızı çayır gittim konuşmadım giyemezsin çanak uçurtma omuz tümce bile rastgele karlı ölemezsin meslek yalnızlık neler koklamadım çömlek nuri bilge ceylan ölemezsin tarkovsky çatı gar amacıyla mektup öpücük böceği türkülerle türkülerle uçurtma web kelime uçurtma yoksulluk küçüksün rindane doğa baba kelime karlı hane yoksulluk nuri bilge ceylan leylek meslek konuşmadım kamusal mizah meslek karlı nuri bilge ceylan hangar dert çanak çikolata açalım haram şefim güfte arkadaş senden meslek uçurtma vurulmuş sözcük çanak mektup programlama nuri bilge ceylan çömlek doğa dayı çanak nasıl konuşmadım seher yeli türkülerle doğa dayı nuri bilge ceylan şefim nuri bilge ceylan ambar çanak senden leylek tasarım neler para mor hicranlar uçurtma acılar yağmurla çatır çutur doğa dayı uçuyor leylek uçurum koklamadım çatı bilinen gar açalım çatır çutur giyemezsin deva şarkı rindane para deva giyemezsin şarkı ambar cümle kamusal mizah kırgınmış senden bilinen çeşme programlama karlı mektup konuşmadım temel sümbül nasıl yoksulluk programlama virane"  
-//     },
+        new Post("Adobe Photoshop - Giriş",
+                ["photoshop", "tasarım", "UI", "adobe", "web tasarım"],
+                842,
+                "./img/adobe.svg",
+                14,
+                [["p","leylek hangar ambar çayır hangar seher yeli mor hicranlar kodlama yakarış tarkovsky çehov uçuyor çatı çömlek bile sözcük dert çatı doğa baba çehov vurulmuş hayran doğa ana yakarış deva gar omuz çatı tasarım gar çatır çutur kodlama doğa dayı hane çömlek adı hani ambar devinim virane kefen neler yalnızlık giyemezsin nuri bilge ceylan yoksulluk nuri bilge ceylan yavru nasıl seher yeli çömlek çikolata ölemezsin ziyan çeşme beni leylek mor hicranlar doğa dayı meslek çehov sümbül şefim yoksulluk programlama konuşmadım doğa dayı türkülerle yalnızlık para gülüm şarkı vurulmuş beni kefen meslek haram web adı şarkı çehov gittim cümle rindane açalım açalım mor hicranlar küçüksün leylek yaren tümce konuşmadım dosyamızı acılar çehov doğa ana açalım zarf senden yük bilinen omuz rastgele yağmurla yağmurla doğa baba temel devinim sözlük güfte hangar bilinen vurulmuş yağmurla meslek temel cümle yük hane nasıl rindane nasıl gar arkadaş çömlek adı sözlük sümbül web meslek virane devinim nuri bilge ceylan karlı dosyamızı gittim dert yağmurla nuri bilge ceylan kamusal mizah gittim uçurum hane çatı web şarkı kelime şarkı doğa ana tarkovsky sözlük tarkovsky doğa dayı haram yoksulluk kamusal mizah yalnızlık uçuyor koklamadım kamusal mizah hayran leylek aman uçurtma seher yeli kodlama mektup acılar yaren çatı yağmurla haram yavru rindane güfte şefim cümle kelime bilinen gittim omuz yağmurla nasıl uçurum tümce arkadaş sözcük yoksulluk ziyan karlı meslek deva giyemezsin temel tarkovsky yalnızlık doğa ana doğa baba dert gülüm cellat programlama dert senden konuşmadım bile sümbül tümce dert tümce çatır çutur sözcük türkülerle hane haram yoksulluk kelime çeşme acılar ölemezsin aman rastgele çikolata beni leylek arkadaş kefen türkülerle acılar gönül dosyamızı deva gar açalım çayır para çatır çutur mor hicranlar kefen yalnızlık haram amacıyla omuz çayır öpücük böceği temel omuz gar çeşme çehov gar mor hicranlar güfte istesen de tren bile dosyamızı çayır gittim konuşmadım giyemezsin çanak uçurtma omuz tümce bile rastgele karlı ölemezsin meslek yalnızlık neler koklamadım çömlek nuri bilge ceylan ölemezsin tarkovsky çatı gar amacıyla mektup öpücük böceği türkülerle türkülerle uçurtma web kelime uçurtma yoksulluk küçüksün rindane doğa baba kelime karlı hane yoksulluk nuri bilge ceylan leylek meslek konuşmadım kamusal mizah meslek karlı nuri bilge ceylan hangar dert çanak çikolata açalım haram şefim güfte arkadaş senden meslek uçurtma vurulmuş sözcük çanak mektup programlama nuri bilge ceylan çömlek doğa dayı çanak nasıl konuşmadım seher yeli türkülerle doğa dayı nuri bilge ceylan şefim nuri bilge ceylan ambar çanak senden leylek tasarım neler para mor hicranlar uçurtma acılar yağmurla çatır çutur doğa dayı uçuyor leylek uçurum koklamadım çatı bilinen gar açalım çatır çutur giyemezsin deva şarkı rindane para deva giyemezsin şarkı ambar cümle kamusal mizah kırgınmış senden bilinen çeşme programlama karlı mektup konuşmadım temel sümbül nasıl yoksulluk programlama virane"]]
+        )  
+    // },
 //     {
 //         title: "Responsive Tasarım - CSS",
 //         tags: ["responsive", "mobil", "css3", "media", "duyarlı", "web tasarım"],

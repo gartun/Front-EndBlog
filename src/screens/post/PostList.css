@@ -1,0 +1,21 @@
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 95%;
+  padding: 1em 0;
+}
+
+@media (min-width: 800px) {
+  .post-list {
+    max-width: 1200px;
+    margin: 1.5em auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  .post-list {
+    max-width: 1450px;
+    margin: 2em auto;
+  }
+}
