@@ -1,0 +1,11 @@
+@mixin media($device) {
+  @media (min-width: $device) {
+    @content;
+  }
+}
+
+@mixin imgWrapper($size: $media-img-wrapper-size) {
+  width: $size;
+  height: $size;
+  overflow: hidden;
+}
