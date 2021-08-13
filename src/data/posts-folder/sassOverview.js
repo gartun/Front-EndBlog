@@ -225,134 +225,180 @@ div {
   @include prefixIt(transform, transitionX(100px), ms moz webkit);
 }
 ~~~
-`
-    ),
-  /*
-    ["code",
-
+Bu Sass kodlarının CSS'e dönüştürülmüş hâli:
+~~~css
 div {
-    @include prefixIt(transform, transitionX(100px), ms moz webkit);
-}`],
-            ["p", "Bu Sass kodlarının CSS'e dönüştürülmüş hali:"],
-            ["code",`div {
-    -ms-transform: transitionX(100px);
-    -moz-transform: transitionX(100px);
-    -webkit-transform: transitionX(100px);
-    transform: transitionX(100px);
-}`],
-            ["p","Zaman zaman @mixin ifademize birden fazla argüman vermek isteyebiliriz. Bunu '...' ile yapabiliyoruz."],
-            ["code",`@mixin order($height, $selectors...) {
-    @for $i from 0 to length($selectors) {
-        @if $i == 0 {
-            #{nth($selectors, $i + 1)} {
-                position: absolute;
-                height: $height;
-                margin-top: 0;
-            }
-        } @else {
-            #{nth($selectors, $i + 1)} {
-                position: absolute;
-                height: $height;
-                margin-top: $i * $height;
-            }
-        }
+  -ms-transform: transitionX(100px);
+  -moz-transform: transitionX(100px);
+  -webkit-transform: transitionX(100px);
+  transform: transitionX(100px);
+}
+~~~
+Zaman zaman \`@mixin\` ifademize birden fazla argüman vermek isteyebiliriz. Bunu \`...\` ile yapabiliyoruz.
+~~~scss
+@mixin order($height, $selectors...) {
+
+  @for $i from 0 to length($selectors) {
+  
+    @if $i == 0 {
+      #{nth($selectors, 1)} {
+        position: absolute;
+        height: $height;
+        margin-top: 0;
+      }
+    } @else {
+      #{nth($selectors, $i + 1)} {
+        position: absolute;
+        height: $height;
+        margin-top: $i * $height;
+      }
     }
+    
+  }
+  
 }
 
-@include order(140px, ".box-1", ".box-2",);`],
-            ["p","CSS versiyonu:"],
-            ["code",`.box-1 {
-    position: absolute;
-    height: 140px;
-    margin-top: 0;
+@include order(140px, '.box-1', '.box-2', '.box-3')
+~~~
+Adım adım ilerleyerek kodu anlamaya çalışalım:
+- *order* adlı \`mixin\`imizi oluştururken en son sıradaki argümanımız olan \`$selectors\`, eleman sayısı belli olmayan bir liste görevi görüyor. Böylece \`@include\` kullanarak *mixin*i çağırdığımız vakit istediğimiz kadar parametre verebiliriz.
+- \`@for\` döngüsü yardımı ile, sıfırdan başlayarak \`$selectors\` listesinin eleman sayısının bir eksiğine kadar gideceğiz, çünkü \`to\` kullandık.
+- \`@if\`-\`@else\` kontrol yapılarını kullanarak, her döngüde artan \`$i\` sayısını test ediyoruz. Eğer bu sayı sıfırsa \`$margin-top\` niteliğini de sıfır yapıyoruz. Sıfır değilse, \`margin-top\` niteliğinin değerini \`$i * $height\` formülüne eşitliyoruz. Bu sayede elemanlarımız alt alta diziliyorlar.
+Kodumuzun CSS hâli:
+~~~css
+.box-1 {
+  position: absolute;
+  height: 140px;
+  margin-top: 0;
 }
 
 .box-2 {
-    position: absolute;
-    height: 140px;
-    margin-top: 140px;
-}`],
-            ["h3","@extend"],
-            ["p","@mixin kullanımına benzer bir kullanımı olan ve sıklıkla kafa karıştıran @extend yapısı, bir stil kuralının içindeyken bir başka stil kuralını kopyalamamızı olanaklı kılıyor."],
-            ["code", `%btn{
-    padding: .5em 1em;
-    border: none;
+  position: absolute;
+  height: 140px;
+  margin-top: 140px;
+}
+
+.box-3 {
+  position: absolute;
+  height: 140px;
+  margin-top: 280px;
+}
+~~~
+
+### extend
+\`@mixin\` kullanımına benzer bir kullanımı olan ve sıklıkla kafa karıştıran \`@extend\` yapısı, bir stil kuralının içindeyken bir başka stil kuralını kopyalamamızı olanaklı kılıyor.
+~~~scss
+%btn {
+  padding: 0.75em 1.25em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer; 
+  &:focus {
+    outline: 1px dashed darkcyan;
+    outline-offset: 3px;
+  }
 }
 
 .btn-danger {
-    @extend %btn;
-    background-color: crimson;
-    color: ghostwhite;
+  @extend %btn;
+  background-color: crimson;
+  color: ghostwhite;
 }
 
 .btn-info {
-    @extend %btn;
-    background-color: deepskyblue;
-    color: #000;
-}`],
-            ["p", "CSS'e dönüştürülmüs hali:"],
-            ["code",`.btn-info, .btn-danger {
-    padding: 0.5em 1em;
-    border: none;
+  @extend %btn;
+  background-color: deepskyblue;
+  color: #000;
+}
+~~~
+Bütün butonlarımızda ortak olacağını düşündüğümüz özellikleri \`%btn\` altında topladık. Daha sonra butonumuzun arka plan rengine endeksli olarak selektöre özel stil kuralları yazdık. Bu selektörlerin stil şemalarındaki \`@extend %btn\` satırına dikkat edin. Bu satır sayesinde ortak özellikleri kopyalıyoruz.
+*'%'* işareti, yazdığımız stil kuralının yalnızca şablon olma amacıyla orada bulunduğunu belirtiyor. Dikkat ederseniz CSS kodlarımız arasında o kod bloğu bulunmuyor:
+~~~css
+.btn-info, .btn-danger {
+  padding: 0.75em 1.25em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-info:focus, .btn-danger:focus {
+  outline: 1px dashed darkcyan;
+  outline-offset: 3px;
 }
 
 .btn-danger {
-    background-color: crimson;
-    color: ghostwhite;
+  background-color: crimson;
+  color: ghostwhite;
 }
 
 .btn-info {
-    background-color: deepskyblue;
-    color: #000;
-}`],
-            ["p", "'%' işareti, yazdığımız stil kuralının yalnızca şablon olma amacıyla orada bulunduğunu belirtiyor. Dikkat ederseniz CSS kodlarımız arasında o kod bloğu bulunmuyor."],
-            ["h2", "Functions"],
-            ["p","Stil şablonlarını belirli yerlerde kullanmak ve argümanlara bağımlı olarak farklı farklı çıktılar elde etmekten daha karmaşık işlemler gerçekleştirmek istediğimizde fonksiyonları kullanıyoruz. 'mixin'lerle ne farkı var diye soruyor olabilirsiniz: Çoğunlukla ikisi birbiririnin yerine kullanılabilir, ancak tavsiye edilen kullanım şekli; fonksiyonların değer hesaplamalarında, 'mixin'lerin de stil şablonu yerleştirme amacıyla kullanılmasıdır."],
-            ["p","Fonksiyonlar '@function' kelimesi başa getirilerek tanımlanıyorlar. Daha önce değindiğimiz konuların bazılarını da kullandığımız bir örnek:"],
-            ["code",`$bodyBg: #343434;
+  background-color: deepskyblue;
+  color: #000;
+}
+~~~
+### function
+Stil şablonlarını belirli yerlerde kullanmak ve argümanlara bağımlı olarak farklı farklı çıktılar elde etmekten daha karmaşık işlemler gerçekleştirmek istediğimizde fonksiyonları kullanıyoruz. *'mixin'*lerle ne farkı var diye soruyor olabilirsiniz: Çoğunlukla ikisi birbirinin yerine kullanılabilir, ancak tavsiye edilen kullanım şekli; fonksiyonların değer hesaplamalarında, *'mixin'*lerin de stil şablonu yerleştirme amacıyla kullanılmasıdır. Fonksiyonlar \`@function\` kelimesi başa getirilerek tanımlanıyorlar.
+Daha önce değindiğimiz konuların bazılarını da kullandığımız bir örnek:
+~~~scss
+$bodyBg: #343434;
 $divBg: #cdcdcd;
 
 @function contrastColor($bgcolor) {
-    @if(lightness($bgcolor) < 45%) {
-    @return ghostwhite;
-    }
+  @if(lightness($bgcolor) < 45%) {
+    @return #dfdfdf;
+  }
     @return #222;
 }
 
-body{
-    background: $bodyBg;
-    color: contrastColor($bodyBg);
-}
-
-div{
-    background: $divBg;
-    color: contrastColor($divBg);
-}`],
-            ["p","Önce iki değişken oluşturduk, daha sonra koşul bloğumuzu kullanarak bize verilecek olan arka plan rengine göre metin rengimizi döndürdük. CSS'e dönüştürülmüş hâli:"],
-            ["code", `body {
-    background: #343434;
-    color: ghostwhite;
+body {
+  background: $bodyBg;
+  color: contrastColor($bodyBg);
 }
 
 div {
-    background: #cdcdcd;
-    color: #222;
-}`],
-            ["p","Yer yer fonksiyonlarımıza belli olmayan bir sayıda argüman vermemiz gerekebilir. Bu gibi durumlarda '...' kullandığımızı söylemiştik. Böylece fonksiyonumuza bir argüman listesi vermiş oluyoruz."],
-            ["code",`@function sum($nums...) {
-    $sum: 0;
-    @each $num in $nums {
-        $sum: $sum + $num;
-    }
-    @return $sum;
+  background: $divBg;
+  color: contrastColor($divBg);
+}
+~~~
+Önce iki değişken oluşturduk, bunlar renklerimizi tutuyorlar, daha sonra koşul bloğumuzu kullanarak bize verilecek olan arka plan rengininin **lightness** oranına göre metin rengimizi döndürdük.
+CSS'e dönüştürülmüş hâli:
+~~~css
+body {
+  background: #343434;
+  color: #dfdfdf;
+}
+
+div {
+  background: #cdcdcd;
+  color: #222;
+}
+~~~
+Yer yer fonksiyonlarımıza belli olmayan bir sayıda argüman vermemiz gerekebilir. Bu gibi durumlarda **...** kullandığımızı söylemiştik. Böylece fonksiyonumuza bir argüman listesi vermiş oluyoruz.
+~~~scss
+// ne kadar $num alacağımızı bilmiyoruz
+@function sum($nums...) {
+
+  // $sum değişkeni oluşturup sıfıra eşitliyoruz. Verilecek olan
+  // argüman listesinde döngü döndükçe bu değişkenin değeri değişecek
+  $sum: 0;
+  
+  
+  @each $num in $nums {
+    $sum: $sum + $num;
+  }
+  @return $sum;
 }
 
 .box {
-    width: sum(100px, 40px, 20px);
-}`],
-            ["p", "CSS'e dönüştürülmüş hâli:"],
-            ["code", `.box {
-    width: 160px;
-}`]
-        ]
-        ),*/
+  width: sum(100px, 40px, 20px);
+}
+~~~
+CSS'e dönüştürülmüş hâli:
+~~~css
+.box {
+  width: 160px;
+}
+~~~
+## Sonuç Olarak
+Bu yazımızda sizi ***Sass*** ile kaynaştırmaya çalıştık; kuruluma ve temel araçlara değindik. *Döngüler*, *kontrol yapıları* ve *fonksiyonlar* gibi kavramları örneklerle anlatarak, Sass dünyasının size mümkün kıldığı şeyleri görmenizi sağladığımızı düşünüyoruz.  
+`)
