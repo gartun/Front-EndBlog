@@ -1,6 +1,4 @@
-import { Post } from '../posts';
-
-export default new Post(
+export default (PostCls) => new PostCls(
       "Sass - Genel Bakış",
       ["css", "frontend", "arayüz", "sass", "tasarım", "css3", "stil"],
       252,

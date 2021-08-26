@@ -1,6 +1,4 @@
-import { Post } from '../posts.js';
-
-export default new Post(
+export default (PostCls) => new PostCls(
   "Adobe Photoshop - Giriş",
     ["photoshop", "tasarım", "UI", "adobe", "web tasarım"],
   842,
