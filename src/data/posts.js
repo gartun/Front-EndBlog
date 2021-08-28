@@ -5,11 +5,16 @@ import {
   sassOverview,
   asyncFetching,
   designPlanning,
+  reactHooksIntro,
   whatIsSEO,
   responsiveDesign,
   intObserver,
   reactOptimization
 } from "./posts-folder/";
+
+// markdown-it converts markdown to html
+// we use this function to strip html tags.
+import stripHtmlFrom from "helpers/stripHtmlFrom";
 
 const mdIt = require("markdown-it")({
   html: true
@@ -20,13 +25,6 @@ const mdIt = require("markdown-it")({
 UTIL FUNCS START
 #############################
 */
-// markdown-it converts markdown to html
-// we use this function to strip html tags.
-function stripHTMLFrom(text) {
-  const htmlRegex = /<\/*\w+>/g;
-
-  return text.replaceAll(htmlRegex, "");
-}
 
 function isParag(line) {
   const trimmed = line.trim(),
@@ -59,9 +57,9 @@ export class Post {
           
     // here we convert markdown to html with the help of markdown it
     const mdText = mdIt.render(txt);
-
+    
     // then we return the converted text with its html tags stripped
-    return stripHTMLFrom(mdText).substring(0, endingIndex) + "...";
+    return stripHtmlFrom(mdText).substring(0, endingIndex) + "...";
   } /* getIntro ending */
   
   getReadingTime() {
@@ -118,6 +116,7 @@ const posts = [
   sassOverview(Post),
   asyncFetching(Post),
   designPlanning(Post),
+  reactHooksIntro(Post),
   whatIsSEO(Post),
   responsiveDesign(Post),
   intObserver(Post),

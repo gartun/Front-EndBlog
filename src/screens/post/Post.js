@@ -5,9 +5,13 @@ import MD from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Container from "react-bootstrap/Container";
+
 
 // import "./post.css";
-import { posts, users } from "../../data/data";
+import { posts, users } from "data/data";
+
+import useWindowDimensions from "custom-hooks/useWindowDimensions";
 
 const keys = ["enter", "ctrl", "shift", "alt"];
 
@@ -39,13 +43,16 @@ const Post = () => {
 
   const author = users.find((user) => user.userId === userId);
 
-  const relatedArticles = posts.filter((post) =>
-    post.tags.some((tag) => tags.includes(tag))
-  );
+  const relatedArticles = posts.filter((post) => {
+    // we dont want to show current article in related articles.
+    return +id !== post.postId && post.tags.some((tag) => tags.includes(tag))
+  });
+
+  const { width } = useWindowDimensions();
 
   return (
-    <>
-      <section className="post w-75">
+    <Container fluid="lg">
+      <section className={`post ${width > 1200 ? "w-75" : ""}`}>
         <h2 className="post__title">{title}</h2>
         <p className="author-name">
           <strong>Yazar:</strong> {author.name}
@@ -60,7 +67,6 @@ const Post = () => {
             </Link>
           ))}
         </p>
-        <h3 className="text-center my-3">İçerik</h3>
 
         <MD
           components={components}
@@ -70,17 +76,24 @@ const Post = () => {
         />
       </section>
 
-      <aside className="card related-articles w-25">
-        <div className="card-header">Benzer Yazılar</div>
-        <ul className="list-group list-group-flush">
-          {relatedArticles.map((article) => (
-            <Link to={"/post/" + article.postId} key={article.postId}>
-              <li className="list-group-item">{article.title}</li>
-            </Link>
-          ))}
-        </ul>
-      </aside>
-    </>
+      {
+        width > 1200 && (
+        <aside className="card related-articles w-25">
+          <div className="card-header">Benzer Yazılar</div>
+          <ul className="list-group list-group-flush">
+            {
+              relatedArticles.map((article) => (
+                <Link to={"/post/" + article.postId} key={ article.postId }>
+                  <li className="list-group-item">{ article.title }</li>
+                </Link>
+              ))
+            }
+          </ul>
+        </aside>
+        )
+      }
+      
+    </Container>
   );
 };
 

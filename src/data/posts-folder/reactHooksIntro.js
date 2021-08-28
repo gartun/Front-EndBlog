@@ -186,6 +186,7 @@ const List = ({ todoList }) => {
 export default List;
 ~~~
 Son olarak *Task.js* adlı dosyayı oluşturuyoruz.
+
 ***Task.js***:
 ~~~jsx
 import { useEffect } from 'react';

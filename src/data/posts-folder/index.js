@@ -4,6 +4,7 @@ export { default as jsIntro } from './jsIntro';
 export { default as sassOverview } from './sassOverview';
 export { default as asyncFetching } from './asyncFetching';
 export { default as designPlanning } from './designPlanning';
+export { default as reactHooksIntro } from './reactHooksIntro';
 export { default as whatIsSEO } from './whatIsSEO';
 export { default as responsiveDesign } from './responsiveDesign';
 export { default as intObserver } from './intObserver';

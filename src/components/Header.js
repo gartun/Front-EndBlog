@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -7,6 +7,16 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [word, setWord] = useState("");
+  const btnRef = useRef();
+
+  const handleKeypress = (e) => {
+    if(e.keyCode === 13) {
+      console.log("balalkfjalkfj")
+      e.preventDefault();
+      btnRef.current.click();
+    }
+  }
+
   return (
     <header>
       <NavBar bg="primary" variant="dark" expand="md" collapseOnSelect>
@@ -27,23 +37,36 @@ const Header = () => {
                 <NavBar.Text className="navlink">Yazılar</NavBar.Text>
               </Link>
             </Nav>
-            <Form inline>
+            <Form inline onKeyPress={handleKeypress}>
               <FormControl
                 type="text"
                 placeholder="ara"
                 className="mr-sm-2"
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
+                
               />
-              <Link to={"/search/" + word.toLowerCase()}>
-                <Button
-                  onClick={() => setWord("")}
-                  variant="info"
-                  disabled={word.trim() === ""}
-                >
-                  Search
-                </Button>
-              </Link>
+              {
+                word.trim() !== "" ? (
+                  <Link to={ "/search/" + word.toLowerCase() }>
+                    <Button
+                      ref={btnRef}
+                      onClick={() => setWord("") }
+                      variant="info"
+                    >
+                      Search
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button
+                    variant="info"
+                    disabled
+                   >
+                     Search
+                   </Button>
+                )
+              }
+              
             </Form>
           </NavBar.Collapse>
         </Container>
