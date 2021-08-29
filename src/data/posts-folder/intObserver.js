@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   "Intersection Observer Örnek Proje",
   [!"javascript", "intersection observer", "web programlama"],

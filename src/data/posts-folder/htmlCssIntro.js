@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   'Html5 ve Css3 - Giriş',
   ["html", "html5", "css3", "css", "web tasarım", "web kodlama", "mark-up"],

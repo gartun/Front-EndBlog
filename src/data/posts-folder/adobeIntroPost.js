@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   "Adobe Photoshop - Giriş",
     ["photoshop", "tasarım", "UI", "adobe", "web tasarım"],

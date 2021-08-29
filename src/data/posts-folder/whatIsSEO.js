@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
     "SEO Nedir ve Neden Önemlidir",
     ["seo","html5", "optimizasyon", "arama motorları", "google"],

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   "Responsive Tasarım - CSS",
   ["responsive", "mobil", "css3", "media", "duyarlı", "web tasarım"],

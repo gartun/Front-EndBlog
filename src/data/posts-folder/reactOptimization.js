@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   "React Optimizasyon",
   ["react", "useCallback", "useMemo", "memo", "render"],

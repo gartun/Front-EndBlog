@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   "React Hooks Giriş",
   ["react", "react hooks", "useState", "useEffect", "render"],

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
     "Tasarım Planlaması",
     ["photoshop", "tasarım", "UI", "veri tabanı", "web tasarım"],

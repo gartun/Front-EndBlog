@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls (
   "JavaScript - Giriş",
   ["javascript", "script", "dinamik web", "frontend", "web kodlama", "programlama"],

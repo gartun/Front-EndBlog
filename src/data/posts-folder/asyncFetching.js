@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
   "Asenkron Bilgi Çekme",
   ["javascript", "async", "await", "veri tabanı", "web programlama", "fetch"],

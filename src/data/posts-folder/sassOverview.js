@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default (PostCls) => new PostCls(
       "Sass - Genel Bakış",
       ["css", "frontend", "arayüz", "sass", "tasarım", "css3", "stil"],
