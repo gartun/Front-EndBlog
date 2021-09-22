@@ -28,7 +28,7 @@ const SocialButtons = ({ url }) => {
 
   return (
     <>
-      <p onClick={() => setShow(!show)} style:{{cursor: "pointer"}}>
+      <p onClick={() => setShow(!show)} style={{cursor: "pointer"}}>
         <strong>paylaş</strong>{" "}
         {show ? <MdArrowDropUp size={40} /> : <MdArrowDropDown size={40} />}:
       </p>{" "}
