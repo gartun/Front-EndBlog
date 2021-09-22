@@ -1,4 +1,4 @@
-import { 
+import {
   adobeIntroPost,
   htmlCssIntro,
   jsIntro,
@@ -9,7 +9,7 @@ import {
   whatIsSEO,
   responsiveDesign,
   intObserver,
-  reactOptimization
+  reactOptimization,
 } from "./posts-folder/";
 
 // markdown-it converts markdown to html
@@ -17,7 +17,7 @@ import {
 import removeHtmlFrom from "helpers/removeHtmlFrom";
 
 const mdIt = require("markdown-it")({
-  html: true
+  html: true,
 });
 
 /*
@@ -28,9 +28,9 @@ UTIL FUNCS START
 
 function isParag(line) {
   const trimmed = line.trim(),
-        len = trimmed.length;
+    len = trimmed.length;
 
-  return len > 0 && !(/^[0-9#\-(```)]/.test(trimmed));
+  return len > 0 && !/^[0-9#\-(```)]/.test(trimmed);
 }
 /*
 #############################
@@ -48,33 +48,31 @@ export class Post {
     this.userId = userId;
     this.body = body;
   }
-  
+
   getIntro() {
-    const txt = this.body.split(/\n/).find(line => isParag(line));
+    const txt = this.body.split(/\n/).find((line) => isParag(line));
     const len = txt.length,
-          startingIndex = len > 120 ? 120 : len / 2,
-          endingIndex = txt.indexOf(" ", startingIndex);
-          
+      startingIndex = len > 120 ? 120 : len / 2,
+      endingIndex = txt.indexOf(" ", startingIndex);
+
     // here we convert markdown to html with the help of markdown it
     const mdText = mdIt.render(txt);
-    
+
     // then we return the converted text with its html tags stripped
     return removeHtmlFrom(mdText).substring(0, endingIndex) + "...";
   } /* getIntro ending */
-  
+
   getReadingTime() {
     let wholeText = "";
-    
+
     for (let el of this.body.split(/\n/)) {
-      if(el === '') continue;
+      if (el === "") continue;
       if (isParag(el)) wholeText += el + " ";
     }
-    
+
     return Math.ceil(wholeText.split(" ").length / 225) + 2;
   } /* getReadingTime ending */
-  
-}/* Class ending */
-
+} /* Class ending */
 
 /*
 function Post(title, tags, postId, img, userId, body) {
@@ -120,7 +118,7 @@ const posts = [
   whatIsSEO(Post),
   responsiveDesign(Post),
   intObserver(Post),
-  reactOptimization(Post)
+  reactOptimization(Post),
 ];
 
 export default posts;

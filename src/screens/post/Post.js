@@ -6,6 +6,9 @@ import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Container from "react-bootstrap/Container";
+import Badge from "react-bootstrap/Badge";
+
+import SocialButtons from "components/SocialButtons";
 
 import { posts, users } from "data/data";
 
@@ -23,7 +26,6 @@ const components = {
         {...props}
       />
     ) : (
-
       <code className={className + " inline-code"} {...props}>
         {children}
       </code>
@@ -41,7 +43,7 @@ const Post = () => {
 
   const relatedArticles = posts.filter((post) => {
     // we dont want to show current article in related articles.
-    return +id !== post.postId && post.tags.some((tag) => tags.includes(tag))
+    return +id !== post.postId && post.tags.some((tag) => tags.includes(tag));
   });
 
   const { width } = useWindowDimensions();
@@ -58,11 +60,13 @@ const Post = () => {
             <strong>etiketler:</strong>
           </span>
           {tags.map((tag) => (
-            <Link key={tag} to={"/search/" + tag}>
-              <span className="badge badge-pill badge-info mx-1">{tag}</span>
-            </Link>
+            <Badge key={tag} className="mx-1">
+              <Link to={"/search/" + tag}>{tag}</Link>
+            </Badge>
           ))}
         </p>
+
+        <SocialButtons url={window.location.href} />
 
         <MD
           components={components}
@@ -72,23 +76,18 @@ const Post = () => {
         />
       </section>
 
-      {
-        width > 1200 && (
+      {width > 1200 && (
         <aside className="card related-articles w-25">
           <div className="card-header">Benzer Yazılar</div>
           <ul className="list-group list-group-flush">
-            {
-              relatedArticles.map((article) => (
-                <Link to={"/post/" + article.postId} key={ article.postId }>
-                  <li className="list-group-item">{ article.title }</li>
-                </Link>
-              ))
-            }
+            {relatedArticles.map((article) => (
+              <Link to={"/post/" + article.postId} key={article.postId}>
+                <li className="list-group-item">{article.title}</li>
+              </Link>
+            ))}
           </ul>
         </aside>
-        )
-      }
-      
+      )}
     </Container>
   );
 };

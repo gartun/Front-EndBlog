@@ -8,8 +8,7 @@ const UserList = () => {
   return (
     <Container fluid="lg">
       <section className="user-list">
-        {
-          users.map((user) => (
+        {users.map((user) => (
           <div className="user-wrapper" key={user.userId}>
             <div className="media">
               <div className="media-img-wrapper align-self-center mr-3">

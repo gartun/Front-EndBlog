@@ -1,11 +1,12 @@
 // eslint-disable-next-line
-export default (PostCls) => new PostCls(
-      "Sass - Genel Bakış",
-      ["css", "frontend", "arayüz", "sass", "tasarım", "css3", "stil"],
-      252,
-      "./img/css3.svg",
-      13,
-      `## Sass Nedir? 
+export default (PostCls) =>
+  new PostCls(
+    "Sass - Genel Bakış",
+    ["css", "frontend", "arayüz", "sass", "tasarım", "css3", "stil"],
+    252,
+    "./img/css3.svg",
+    13,
+    `## Sass Nedir? 
         
 Tanımlamak için [kendi sitesinden](https://sass-lang.com/documentation) alıntı yaparsak; **Sass**, *CSS*'e dönüştürülen bir stil şeması dilidir. Değişkenlerin, fonksiyonların ve stil yazımını kolaylaştıran daha birçok parçanın kullanımına olanak sağlar. Büyük çaplı internet sitelerinin stil şemalarının tertip ve takibini kolaylaştırır.
 
@@ -400,4 +401,5 @@ CSS'e dönüştürülmüş hâli:
 ~~~
 ## Sonuç Olarak
 Bu yazımızda sizi ***Sass*** ile kaynaştırmaya çalıştık; kuruluma ve temel araçlara değindik. *Döngüler*, *kontrol yapıları* ve *fonksiyonlar* gibi kavramları örneklerle anlatarak, Sass dünyasının size mümkün kıldığı şeyleri görmenizi sağladığımızı düşünüyoruz.  
-`)
+`
+  );

@@ -26,9 +26,13 @@ const User = () => {
   return (
     <Container fluid="lg">
       <section>
-        <h3 style={{
-          textAlign: "center"
-        }}>{name}</h3>
+        <h3
+          style={{
+            textAlign: "center",
+          }}
+        >
+          {name}
+        </h3>
         <div className="user-img-wrapper">
           <img src={img} alt={name} />
         </div>
@@ -39,8 +43,7 @@ const User = () => {
             <div className="card-header">Bütün yazıları</div>
 
             <ul className="list-group list-group-flush">
-              {
-                postsOfUser.length > 0 ? (
+              {postsOfUser.length > 0 ? (
                 postsOfUser.map((post) => (
                   <Link to={"/post/" + post.postId} key={post.postId}>
                     <li className="list-group-item">{post.title}</li>

@@ -10,11 +10,11 @@ const Header = () => {
   const btnRef = useRef();
 
   const handleKeypress = (e) => {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       e.preventDefault();
       btnRef.current.click();
     }
-  }
+  };
 
   return (
     <header>
@@ -43,29 +43,22 @@ const Header = () => {
                 className="mr-sm-2"
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
-                
               />
-              {
-                word.trim() !== "" ? (
-                  <Link to={ "/search/" + word.toLowerCase() }>
-                    <Button
-                      ref={btnRef}
-                      onClick={() => setWord("") }
-                      variant="info"
-                    >
-                      Search
-                    </Button>
-                  </Link>
-                ) : (
+              {word.trim() !== "" ? (
+                <Link to={"/search/" + word.toLowerCase()}>
                   <Button
+                    ref={btnRef}
+                    onClick={() => setWord("")}
                     variant="info"
-                    disabled
-                   >
-                     Search
-                   </Button>
-                )
-              }
-              
+                  >
+                    Search
+                  </Button>
+                </Link>
+              ) : (
+                <Button variant="info" disabled>
+                  Search
+                </Button>
+              )}
             </Form>
           </NavBar.Collapse>
         </Container>

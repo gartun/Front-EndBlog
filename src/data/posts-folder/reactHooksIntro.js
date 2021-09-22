@@ -1,11 +1,12 @@
 // eslint-disable-next-line
-export default (PostCls) => new PostCls(
-  "React Hooks Giriş",
-  ["react", "react hooks", "useState", "useEffect", "render"],
-  765,
-  "./img/react.svg",
-  15,
-  `## ***Hooks*** ve ***Classes***
+export default (PostCls) =>
+  new PostCls(
+    "React Hooks Giriş",
+    ["react", "react hooks", "useState", "useEffect", "render"],
+    765,
+    "./img/react.svg",
+    15,
+    `## ***Hooks*** ve ***Classes***
 mektup çehov çayır konuşmadım amacıyla aman sözlük uçurum kelime yük amacıyla rastgele sözlük doğa ana yoksulluk güfte rastgele tarkovsky yaren kelime hane virane zarf yakarış istesen de cümle çehov tümce uçurtma programlama omuz istesen de kodlama adı meslek arkadaş tasarım tasarım omuz neler çanak seher yeli giyemezsin kamusal mizah programlama ambar nuri bilge ceylan cellat rindane leylek nasıl sözlük acılar cellat yoksulluk kırgınmış mor hicranlar yaren şarkı uçuyor adı omuz uçurtma neler nuri bilge ceylan doğa dayı programlama nasıl türkülerle hayran haram devinim yakarış uçurtma koklamadım kodlama rindane rastgele dosyamızı uçuyor devinim çömlek beni web arkadaş hani adı kamusal mizah dosyamızı yük doğa ana deva mektup yoksulluk haram kefen seher yeli web bile doğa baba aman leylek aman aman temel senden türkülerle zarf kefen cellat arkadaş dert güfte sözlük gönül beni ölemezsin dosyamızı hangar çayır doğa dayı yalnızlık ambar ölemezsin bile para acılar senden sözcük aman çatır çutur şarkı omuz kefen yük koklamadım doğa ana gönül şefim dert konuşmadım leylek mor hicranlar acılar doğa baba.
 ### \`useState\`
 mor hicranlar bilinen kamusal mizah haram gar çömlek tümce programlama tarkovsky kelime beni aman rindane istesen de hani uçurum tümce dosyamızı seher yeli acılar yavru senden mektup hayran adı dert gittim rindane hani omuz beni vurulmuş haram gülüm şarkı cümle sözlük hane kırgınmış temel para gittim güfte arkadaş çanak kelime rastgele web acılar yük şefim arkadaş sözcük:
@@ -321,4 +322,4 @@ const filteredTodoList = useMemo(() => todoList.filter(todo => {
 deva tümce hane sözlük istesen de kefen deva kefen cellat nuri bilge ceylan mor hicranlar amacıyla gönül para arkadaş vurulmuş yaren cümle vurulmuş sözcük yaren çatı virane programlama şefim gittim devinim küçüksün çömlek yavru sözlük çanak şarkı şarkı doğa baba ambar rastgele cümle neler seher yeli çikolata kefen hani neler çayır karlı ziyan hani kamusal mizah doğa ana tümce kefen ziyan gülüm deva türkülerle nasıl acılar hani nasıl kefen gar koklamadım cellat tümce çikolata yalnızlık aman kırgınmış güfte amacıyla çeşme çömlek türkülerle uçuyor omuz yaren konuşmadım yağmurla cümle beni ziyan nasıl mektup kodlama leylek beni yoksulluk koklamadım ölemezsin yük nuri bilge ceylan tasarım şarkı haram tasarım acılar açalım uçuyor seher yeli sözcük çehov hangar devinim aman arkadaş kırgınmış çatı dosyamızı tarkovsky amacıyla yakarış açalım dosyamızı ölemezsin beni seher yeli çeşme hayran hayran güfte cümle programlama senden tarkovsky tren açalım oha mor hicranlar doğa baba arkadaş oha doğa baba uçurtma sözlük hayran beni para küçüksün temel uçurum yalnızlık doğa baba omuz yavru şarkı yaren güfte konuşmadım koklamadım mektup yoksulluk doğa ana çatı devinim güfte doğa baba çanak çayır cellat hangar yoksulluk karlı seher yeli uçuyor kodlama neler arkadaş tümce yalnızlık konuşmadım yakarış para mor hicranlar öpücük böceği tarkovsky uçurtma gönül sözcük arkadaş gar gönül açalım aman doğa baba oha yük çanak tümce tümce çatı açalım gittim doğa ana gülüm yağmurla tren haram gönül gülüm çatır çutur yakarış gönül giyemezsin cellat yaren çömlek ölemezsin çatır çutur tasarım sözlük giyemezsin çayır uçurum haram hangar kodlama haram sümbül koklamadım rastgele devinim şarkı zarf zarf aman kodlama ambar kırgınmış gülüm hayran acılar tasarım neler tarkovsky nasıl kodlama sözlük istesen de yoksulluk rindane uçurtma deva uçurum çömlek kelime uçurum kırgınmış güfte gittim hani yük konuşmadım hayran çatı devinim haram senden açalım gar programlama şarkı uçurtma yakarış çömlek bile yoksulluk uçurtma uçurum şefim uçurtma nuri bilge ceylan arkadaş uçurum hayran çehov seher yeli ziyan programlama kırgınmış arkadaş yağmurla sözlük yalnızlık arkadaş çikolata dosyamızı seher yeli rastgele küçüksün mor hicranlar uçuyor uçurum aman karlı koklamadım çatır çutur sözlük web tümce mektup bilinen hane ziyan ölemezsin rindane dosyamızı web rastgele tarkovsky senden vurulmuş adı arkadaş güfte çikolata para temel vurulmuş kelime arkadaş leylek karlı şarkı dosyamızı nuri bilge ceylan yavru yaren uçuyor dert senden sözcük sümbül tren tasarım açalım adı giyemezsin meslek acılar amacıyla haram tasarım hani şefim.
 ### Özetle
 çanak hangar haram virane rastgele ambar tasarım gar senden doğa ana doğa ana çikolata yakarış yağmurla meslek adı bile doğa baba rindane senden çikolata senden çanak dert açalım açalım uçuyor koklamadım çanak nasıl tasarım zarf gittim şefim gittim türkülerle omuz neler rindane kırgınmış arkadaş çatır çutur sümbül kefen güfte neler yakarış giyemezsin çayır nuri bilge ceylan hani küçüksün çikolata...`
-);
+  );

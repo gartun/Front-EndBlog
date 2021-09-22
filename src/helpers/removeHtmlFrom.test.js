@@ -1,9 +1,9 @@
-import removeHtmlFrom from './removeHtmlFrom';
+import removeHtmlFrom from "./removeHtmlFrom";
 
-describe('testing removeHtmlFrom helper => ', () => {
-  it('removes html tags from a string', () => {
-    const txt = 'this is a string';
-    
+describe("testing removeHtmlFrom helper => ", () => {
+  it("removes html tags from a string", () => {
+    const txt = "this is a string";
+
     const tags = [
       `<p>${txt}</p>`,
       `<kbd>${txt}</kbd>`,
@@ -15,9 +15,9 @@ describe('testing removeHtmlFrom helper => ', () => {
       `<article class='a dummy-article'><section class='so many classes '><p>${txt}</p></section></article>`,
       `<div hidden>${txt}</div>`,
     ];
-    
-    tags.forEach(tag => {
+
+    tags.forEach((tag) => {
       expect(removeHtmlFrom(tag)).toEqual(txt);
-    })
-  })
-})
+    });
+  });
+});

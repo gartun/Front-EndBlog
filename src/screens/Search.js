@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -19,7 +18,7 @@ const Search = () => {
             color: "#0034bc",
             paddingBottom: ".5em",
             borderBottom: "1px solid darkgray",
-            marginTop: "1.2em"
+            marginTop: "1.2em",
           }}
         >
           Arama Sonuçları
@@ -30,12 +29,12 @@ const Search = () => {
           </h2>
         ) : (
           selectedPosts.map((post) => (
-            <div key={ post.postId }>
+            <div key={post.postId}>
               <div className="media">
                 <div className="media-body">
-                  <h4 className="mt-0">{ post.title }</h4>
-                  <p className="mb-0">{ post.getIntro() }</p>
-                  <Link to={ "/post/" + post.postId }>
+                  <h4 className="mt-0">{post.title}</h4>
+                  <p className="mb-0">{post.getIntro()}</p>
+                  <Link to={"/post/" + post.postId}>
                     <button className="btn btn-primary my-3">
                       Okumaya devam et
                     </button>

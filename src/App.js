@@ -6,10 +6,7 @@ import "./App.css";
 
 import { Header, Footer, ToTopButton } from "./components/";
 
-import {
-  Home,
-  Search
-} from "./screens/";
+import { Home, Search } from "./screens/";
 
 const PostList = lazy(() => import("./screens/postlist/PostList"));
 const UserList = lazy(() => import("./screens/UserList"));
@@ -23,24 +20,23 @@ const LoadingIndicator = (
 );
 
 const App = () => {
-
   return (
     <>
       <Header />
 
       <main>
-        <Suspense fallback={ LoadingIndicator }>
+        <Suspense fallback={LoadingIndicator}>
           <Switch>
-            <Route exact path="/" component={ Home } />
-              <Route path="/post/:id" component={ Post } />
-              <Route exact path="/user/:id" component={ User } />
-              <Route exact path="/search/:word" component={ Search } />
-              <Route exact path="/posts" component={ PostList } />
-              <Route exact path="/users" component={ UserList } />
+            <Route exact path="/" component={Home} />
+            <Route path="/post/:id" component={Post} />
+            <Route exact path="/user/:id" component={User} />
+            <Route exact path="/search/:word" component={Search} />
+            <Route exact path="/posts" component={PostList} />
+            <Route exact path="/users" component={UserList} />
           </Switch>
         </Suspense>
       </main>
-      
+
       <Footer />
       <ToTopButton />
     </>
