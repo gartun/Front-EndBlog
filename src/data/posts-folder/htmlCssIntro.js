@@ -1,26 +1,76 @@
 // eslint-disable-next-line
 export default (PostCls) =>
   new PostCls(
-    "Html5 ve Css3 - Giriş",
-    ["html", "html5", "css3", "css", "web tasarım", "web kodlama", "mark-up"],
-    209,
-    "./img/html5.svg",
-    12,
-    `## Html5
-vurulmuş gar devinim cellat cümle kodlama haram karlı küçüksün acılar yoksulluk gönül yalnızlık ambar yaren mektup web koklamadım beni ziyan dosyamızı para tarkovsky tasarım dert cümle senden şefim amacıyla çehov ambar adı oha yük mor hicranlar hani zarf haram yoksulluk güfte neler hani gülüm ölemezsin çayır hangar şefim senden virane doğa ana giyemezsin nasıl kelime çatı rastgele tarkovsky nuri bilge ceylan çat.
-### Html5 altbaşlık
-açalım tarkovsky kamusal mizah gülüm çayır adı web arkadaş yavru koklamadım rindane nuri bilge ceylan deva çehov ambar virane yakarış koklamadım devinim web leylek mektup ambar çatır çutur amacıyla tümce uçurtma kırgınmış senden temel yavru bile cümle kefen virane yaren hane cellat gülüm hane çikolata giyemezsin temel ambar uçuyor sözcük doğa ana senden çanak hane sümbül hangar dert kelime vurulmuş acılar arkadaş kelime rastgele çehov dert sözcük giyemezsin mektup acılar çikolata arkadaş ziyan omuz ölemezsin çatı leylek hangar türkülerle dert hayran ölemezsin bile cellat çanak sözlük çatır çutur senden temel cellat amacıyla yağmurla sözlük çeşme web tarkovsky haram istesen de yaren gittim yaren programlama rastgele programlama şarkı çömlek doğa dayı yavru hayran istesen de hayran kelime rastgele yavru devinim sümbül rindane oha dert web çikolata yalnızlık leylek nuri bilge ceylan bile para seher yeli mektup gülüm sümbül yavru şarkı zarf kırgınmış kırgınmış uçurum temel arkadaş ölemezsin yakarış ölemezsin rastgele deva ambar ambar cümle temel çikolata web nasıl rastgele şefim hayran senden karlı koklamadım doğa ana aman uçurum uçurtma açalım yük uçurum cümle uçurum aman dosyamızı yavru neler tümce bilinen gülüm hani mektup.
-### Html5 altbaşlık-2
-gar aman hangar uçuyor türkülerle gönül istesen de aman yalnızlık tarkovsky çeşme koklamadım gittim gülüm para güfte cellat leylek giyemezsin çatı mektup hani sözcük çanak tasarım şarkı dert çeşme virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği şefim devinim güfte gönül bilinen acılar şefim hayran tasarım devinim hani uçuyor oha mektup açalım ölemezsin beni hani bilinen doğa ana öpücük böceği sümbül uçurtma rastgele virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği.
-## Css3 
-virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği.
-### Css3 altbaşlık-1
-bilinen dert açalım güfte nasıl koklamadım deva hangar uçurum yavru çanak doğa dayı istesen de çeşme adı tarkovsky mektup çeşme karlı ziyan istesen de yalnızlık sözcük gittim tarkovsky nasıl şefim kefen yavru küçüksün kefen kelime programlama yağmurla yağmurla uçurtma dert doğa dayı kefen senden açalım hayran küçüksün çikolata gönül yakarış şarkı nasıl tümce temel dert uçurtma çikolata dosyamızı leylek uçurtma omuz çanak karlı konuşmadım meslek kelime haram programlama senden doğa dayı web zarf dert çanak yaren güfte hane çatır çutur bilinen aman konuşmadım çömlek dert gülüm dosyamızı beni adı yavru yük doğa dayı açalım kefen gittim sözlük yakarış tümce bilinen acılar çehov sözlük sözcük türkülerle şarkı çanak gar şefim çayır para mektup programlama uçuyor çehov beni doğa dayı dert tasarım beni oha çatır çutur gar aman yaren oha deva doğa baba bilinen yalnızlık virane koklamadım virane temel güfte kamusal mizah şarkı nasıl koklamadım ziyan istesen de bile gönül hangar yoksulluk çanak doğa baba gönül mektup programlama uçurtma koklamadım arkadaş arkadaş sümbül küçüksün para yakarış çatı hangar karlı şefim omuz yalnızlık dert web deva nuri bilge ceylan sözlük çeşme uçurum yağmurla cellat kodlama tasarım para kırgınmış dert nasıl meslek şarkı vurulmuş doğa baba cümle para kefen gittim yük kelime çayır nasıl programlama çehov kamusal mizah kefen çömlek yakarış çatır çutur sözcük seher yeli çehov amacıyla mektup şefim doğa dayı haram sözlük karlı çehov yoksulluk kamusal mizah çeşme tümce aman hayran gar koklamadım doğa dayı tarkovsky gönül adı çikolata rastgele hayran şarkı çömlek tasarım rastgele dosyamızı türkülerle nuri bilge ceylan güfte tarkovsky çanak yakarış sözlük hani yük istesen de yalnızlık sözcük türkülerle koklamadım türkülerle çeşme vurulmuş cümle yavru istesen de güfte hani zarf.
-### Css3 altbaşlık-2
-hayran çikolata aman gar kamusal mizah doğa ana rindane web leylek para tümce yalnızlık neler temel yağmurla istesen de aman gülüm bilinen ambar tümce omuz yoksulluk şarkı çatır çutur gar uçurum tarkovsky doğa dayı vurulmuş temel seher yeli istesen de haram seher yeli bilinen kefen şefim çömlek para şefim doğa dayı doğa dayı konuşmadım türkülerle kodlama web yük meslek temel tasarım istesen de çatır çutur para koklamadım bile öpücük böceği rastgele virane cellat hane leylek hani senden zarf dosyamızı kamusal mizah neler yavru hane cellat dosyamızı web çanak gülüm uçuyor uçurtma açalım kamusal mizah oha yakarış ölemezsin oha programlama omuz temel cümle ölemezsin kırgınmış nasıl gar beni yavru çeşme hayran virane çehov çatı çatı bilinen öpücük böceği kefen dosyamızı deva ziyan sözcük omuz sözlük hayran hane yalnızlık türkülerle yağmurla gülüm mektup hane açalım çömlek cellat devinim kelime mor hicranlar hane gülüm gittim yük hayran web senden temel oha çatır çutur çanak çömlek yük aman kamusal mizah virane gülüm rindane açalım sümbül gittim para ölemezsin güfte öpücük böceği arkadaş güfte amacıyla kodlama oha nasıl gar mor hicranlar hangar koklamadım hangar bile şarkı şefim çehov çehov giyemezsin uçurum tümce mor hicranlar gittim kırgınmış uçurtma tren açalım programlama türkülerle ambar para yük ziyan ölemezsin konuşmadım adı hane ölemezsin çayır nuri bilge ceylan hayran tren türkülerle tarkovsky amacıyla sümbül ölemezsin karlı sözcük kelime öpücük böceği yavru doğa ana sözcük ölemezsin hane yağmurla çayır gönül çeşme seher yeli açalım koklamadım çanak beni dosyamızı çikolata kelime amacıyla giyemezsin kefen çömlek seher yeli cellat bile gönül tasarım çehov koklamadım öpücük böceği beni dert yavru dert çehov web yalnızlık tarkovsky kırgınmış haram öpücük böceği mor hicranlar vurulmuş adı adı leylek küçüksün cellat para açalım kelime hani amacıyla tarkovsky küçüksün kamusal mizah koklamadım para cümle deva seher yeli koklamadım oha açalım doğa dayı yük gönül senden çanak çanak giyemezsin leylek karlı konuşmadım yağmurla yağmurla gar vurulmuş gittim ölemezsin cellat para giyemezsin çatır çutur haram tren leylek çayır tren doğa baba tarkovsky yakarış uçurtma neler dosyamızı doğa dayı para senden dosyamızı cümle omuz hayran çatı çatı konuşmadım çehov aman koklamadım beni yoksulluk cümle giyemezsin koklamadım. vurulmuş gar devinim cellat cümle kodlama haram karlı küçüksün acılar yoksulluk gönül yalnızlık ambar yaren mektup web koklamadım beni ziyan dosyamızı para tarkovsky tasarım dert cümle senden şefim amacıyla çehov ambar adı oha yük mor hicranlar hani zarf haram yoksulluk güfte neler hani gülüm ölemezsin çayır hangar şefim senden virane doğa ana giyemezsin nasıl kelime çatı rastgele tarkovsky nuri bilge
-### Css3 altbaşlık-3
-ceylan çatı açalım tarkovsky kamusal mizah gülüm çayır adı web arkadaş yavru koklamadım rindane nuri bilge ceylan deva çehov ambar virane yakarış koklamadım devinim web leylek mektup ambar çatır çutur amacıyla tümce uçurtma kırgınmış senden temel yavru bile cümle kefen virane yaren hane cellat gülüm hane çikolata giyemezsin temel ambar uçuyor sözcük doğa ana senden çanak hane sümbül hangar dert kelime vurulmuş acılar arkadaş kelime rastgele çehov dert sözcük giyemezsin mektup acılar çikolata arkadaş ziyan omuz ölemezsin çatı leylek hangar türkülerle dert hayran ölemezsin bile cellat çanak sözlük çatır çutur senden temel cellat amacıyla yağmurla sözlük çeşme web tarkovsky haram istesen de yaren gittim yaren programlama rastgele programlama şarkı çömlek doğa dayı yavru hayran istesen de hayran kelime rastgele yavru devinim sümbül rindane oha dert web çikolata yalnızlık leylek nuri bilge ceylan bile para seher yeli mektup gülüm sümbül yavru şarkı zarf kırgınmış kırgınmış uçurum temel arkadaş ölemezsin yakarış ölemezsin rastgele deva ambar ambar cümle temel çikolata web nasıl rastgele şefim hayran senden karlı koklamadım doğa ana aman uçurum uçurtma açalım yük uçurum cümle uçurum aman dosyamızı yavru neler tümce bilinen gülüm hani mektup gar aman hangar uçuyor türkülerle gönül istesen de aman yalnızlık tarkovsky çeşme koklamadım gittim gülüm para güfte cellat leylek giyemezsin çatı mektup hani sözcük çanak tasarım şarkı dert çeşme virane ziyan karlı ölemezsin dosyamızı haram haram istesen de ziyan kamusal mizah rastgele acılar web rindane yaren kefen yaren tren küçüksün bilinen temel senden gülüm yağmurla cellat şefim çömlek konuşmadım vurulmuş cellat ziyan uçuyor doğa dayı devinim yalnızlık türkülerle hane doğa ana küçüksün yük konuşmadım güfte öpücük böceği şefim devinim güfte gönül bilinen acılar şefim hayran tasarım devinim hani uçuyor oha mektup açalım ölemezsin beni hani bilinen doğa ana öpücük böceği sümbül uçurtma rastgele bilinen dert açalım güfte nasıl koklamadım deva hangar uçurum yavru çanak doğa dayı istesen de çeşme adı tarkovsky mektup çeşme karlı ziyan istesen de yalnızlık sözcük gittim tarkovsky nasıl şefim kefen yavru küçüksün kefen kelime programlama yağmurla yağmurla uçurtma dert doğa dayı kefen senden açalım hayran küçüksün çikolata gönül yakarış şarkı nasıl tümce temel dert uçurtma çikolata dosyamızı leylek uçurtma omuz çanak karlı konuşmadım meslek kelime haram programlama senden doğa dayı web zarf dert çanak yaren güfte hane çatır çutur bilinen aman konuşmadım çömlek dert gülüm dosyamızı beni adı yavru yük doğa dayı açalım kefen gittim sözlük yakarış tümce bilinen acılar çehov sözlük sözcük türkülerle şarkı çanak gar şefim çayır para mektup programlama uçuyor çehov beni doğa dayı dert tasarım beni oha çatır çutur gar aman yaren oha deva doğa baba bilinen yalnızlık virane koklamadım virane temel güfte kamusal mizah şarkı nasıl koklamadım ziyan istesen de bile gönül hangar yoksulluk çanak doğa baba gönül mektup programlama uçurtma koklamadım arkadaş arkadaş sümbül küçüksün para yakarış çatı hangar karlı şefim omuz yalnızlık dert web deva nuri bilge ceylan sözlük çeşme uçurum yağmurla cellat kodlama tasarım para kırgınmış dert nasıl meslek şarkı vurulmuş doğa baba cümle para kefen gittim yük kelime çayır nasıl programlama çehov kamusal mizah kefen çömlek yakarış çatır çutur sözcük seher yeli çehov amacıyla mektup şefim doğa dayı haram sözlük karlı çehov yoksulluk kamusal mizah çeşme tümce aman hayran gar koklamadım doğa dayı tarkovsky gönül adı çikolata rastgele hayran şarkı çömlek tasarım rastgele dosyamızı türkülerle nuri bilge ceylan güfte tarkovsky çanak yakarış sözlük hani yük istesen de yalnızlık sözcük türkülerle koklamadım türkülerle çeşme vurulmuş cümle yavru istesen.
-## Html5-Css3 Nelere değindik?
-güfte hani zarf hayran çikolata aman gar kamusal mizah doğa ana rindane web leylek para tümce yalnızlık neler temel yağmurla istesen de aman gülüm bilinen ambar tümce omuz yoksulluk şarkı çatır çutur gar uçurum tarkovsky doğa dayı vurulmuş temel seher yeli istesen de haram seher yeli bilinen kefen şefim çömlek para şefim doğa dayı doğa dayı konuşmadım türkülerle kodlama web yük meslek temel tasarım istesen de çatır çutur para koklamadım bile öpücük böceği rastgele virane cellat hane leylek hani senden zarf dosyamızı kamusal mizah neler yavru hane cellat dosyamızı web çanak gülüm uçuyor uçurtma açalım kamusal mizah oha yakarış ölemezsin oha programlama omuz temel cümle ölemezsin kırgınmış nasıl gar beni yavru çeşme hayran virane çehov çatı çatı bilinen öpücük böceği kefen dosyamızı deva ziyan sözcük omuz sözlük hayran hane yalnızlık türkülerle yağmurla gülüm mektup hane açalım çömlek cellat devinim kelime mor hicranlar hane gülüm gittim yük hayran web senden temel oha çatır çutur çanak çömlek yük aman kamusal mizah virane gülüm rindane açalım sümbül gittim para ölemezsin güfte öpücük böceği arkadaş güfte amacıyla kodlama oha nasıl gar mor hicranlar hangar koklamadım hangar bile şarkı şefim çehov çehov giyemezsin uçurum tümce mor hicranlar gittim kırgınmış uçurtma tren açalım programlama türkülerle ambar para yük ziyan ölemezsin konuşmadım adı hane ölemezsin çayır nuri bilge ceylan hayran tren türkülerle tarkovsky amacıyla sümbül ölemezsin karlı sözcük kelime öpücük böceği yavru doğa ana sözcük ölemezsin hane yağmurla çayır gönül çeşme seher yeli açalım koklamadım çanak beni dosyamızı çikolata kelime amacıyla giyemezsin kefen çömlek seher yeli cellat bile gönül tasarım çehov koklamadım öpücük böceği beni dert yavru dert çehov web yalnızlık tarkovsky kırgınmış haram öpücük böceği mor hicranlar vurulmuş adı adı leylek küçüksün cellat para açalım kelime hani amacıyla tarkovsky küçüksün kamusal mizah koklamadım para cümle deva seher yeli koklamadım oha açalım doğa dayı yük gönül senden çanak çanak giyemezsin leylek karlı konuşmadım yağmurla yağmurla gar vurulmuş gittim ölemezsin cellat para giyemezsin çatır çutur haram tren leylek çayır tren doğa baba tarkovsky yakarış uçurtma neler dosyamızı doğa dayı para senden dosyamızı cümle omuz hayran çatı çatı konuşmadım çehov aman koklamadım beni yoksulluk cümle giyemezsin koklamadım.
-`
-  );
+    "Html5 ve Css3 - Giriş 
+export default (PostCls) => new PostCls(
+  'Html5 ve Css3 - Giriş',
+  ["html", "html5", "css3", "css", "web tasarım", "web kodlama", "mark-up"],
+  209,
+  './img/html5.svg',
+  12,
+  `## Html
+**HTML**(**H**yperText **M**arkup **L**anguage) bir internet sitesinin içeriklerinin yaratılmasını sağlayan dildir. Örneğin, bu okuduğunuz cümleler **HTML** dili sayesinde ekranınızda bulunuyorlar. Ancak ürkmeyin, kendisi bir **programlama dili değildir**. 
+Başka bir yaklaşımla anlatırsak; **HTML**, _"internet sitemizin içeriği **ne** olacak?"_ sorusuna cevap verir. Herhangi bir editörde(Word, Not Defteri) yazdığınız cümlelerden tek farkı, bu cümlelerin **HTML etiketleri** adını verdiğimiz bileşenler arasına konmasıdır. Etiketler çoğunlukla bir açılış etiketi ve bir kapanış etiketi olmak üzere ikili hâlde karşımıza çıkarlar. **Ancak HTML bir programlama dili olmadığından, içinde yapılan bir hata, ekrana **'error'** olarak yansımayacaktır**. Yani, açılan etiketi kapatmayı unutsanız bile içeriğiniz gösterilecektir. Hatta bu etiketleri kullanmadan da bir ***html*** sayfası oluşturabilirsiniz, fakat bunu yapmanın pek bir faydası olmayacaktır.
+### HTML Elementleri
+Bir HTML elementi; *açılış ve kapanış etiketleri ile bu etiketlerin arasına yerleştirilen içeriklerden oluşur*. 
+**Örnek:**
+~~~html
+<h3>HTML Elementleri</h3>
+~~~
+- \`<h3>\` açılış etiketi
+- *HTML Elementleri*
+- \`</h3>\` kapanış etiketi
+*"h3 nereden çıktı ya?"* sorusuna fazla fırsat vermeden kendisini zihninizden silin, o daha sonranın konusu. Şimdi sadece sözdizimine göz aşinalığı kazanmaya çalışın. Mesela bir internet sitesine gidin ve <kbd>ctrl</kbd> + <kbd>u</kbd> tuşlarına basın. Aynı işlemi, fare imlecinizi sayfa üzerinde(resimler, ve linkler haricinde) bir noktaya getirip farenizin sağ tuşuna tıkladıktan sonra *sayfa kaynağını görüntüle*yi seçerek de yapabilirsiniz.
+Karşınıza korkunç bir manzara çıktıysa, korkmayın! *"Bunu yazan kişi çıldırmış olmalı."* diye de düşünmeyin. Gördüğünüz karmaşa bir insanın eseri değil, insanlar tarafından yazılmış kodların bilgisayarlarca optimize edilmiş hâli. Siz sakinliğinizi koruyun ve örnek olarak verdiğim \`h3\` elementine benzeyen şablonları ayırt etmeye ve incelemeye odaklanın.
+
+Dikkatinizi çekmiş olabilir, bazı elementlerin kapanış etiketine gelmeden bir başka elementin açılış etiketini görüyoruz. Evet, HTML'de elementler genellikle  birbirlerinin ebeveyni/çocuğu olabilirler. Örneğin, kodlayıcılar arasında temel HTML sayfası iskeleti olarak kabul görmüş olan şablona bir göz atalım.
+~~~html
+<!DOCTYPE html>
+
+<html lang="tr">
+ <head>
+   <meta charset="UTF-8">
+   <title>Merhaba!</title>
+   <link rel='stylesheet' href='./styles.css' />
+ </head>
+ 
+ <body>
+   <h1>Hello World!</h1>
+   <p>Oldukça basit bir paragraf.</p>
+   <p class='parag'>Sınıf niteliği 'parag' değerine sahip olan bir paragraf.</p>
+ </body>
+</html>
+~~~
+Daha önce de tembihlediğim gibi, şu noktada elementlerin isimlerine ve neye yaradıklarına takılmayın, bazı elementlerin diğer elementleri nasıl kapsadıklarına odaklanın. Mesela \`html\` elementi. Gördüğünüz gibi sayfadaki bütün içerikleri kapsıyor. Ayrıca, \`html\` elementinin kapanış etiketinin ardından herhangi bir şey bulunmaması gerektiğini unutmayın. Sonra \`head\` ve \`body\` etiketlerini görüyoruz, tıpkı bir vücut tanımlanıyor gibi. \`head\` elementinde genellikle o sayfaya ait genel bilgiler ve diğer kod kaynaklarına(***script*** ve ***style***) varan linkler bulunur. Bu bölümdeki bilgiler sayfada gözükmez. \`link\` elementine dair ilginç şeyler görüyor musunuz? HTML'de bazı elementler kendinden kapanmalıdır \`body\` elementi ise sayfanın içeriğin konumlandığı yerdir.
+
+### İlk İnternet Sitesi
+Şimdi bilgisayarınızda bir klasör oluşturun, istediğiniz adı verebilirsiniz. Bu klasörün içinde de \`index.html\` ve \`styles.css\`adlı iki dosya oluşturun. \`index.html\` dosyasının içine yukarıdaki kodları yapıştırın, değişiklikleri kaydedin ve dosyanın üzerine farenizin sol tuşu ile iki kez tıklayın. HTML dosyasının bilgisayarınızdaki öntanımlı tarayıcı ile açıldığını görecekseniz. 
+
+Tebrikler... İlk internet sayfanızı oluşturdunuz. Ve şimdi sayfaya biraz stil eklemenin vakti geldi.
+
+## CSS
+**CSS**, sayfamızdaki içerikleri, bir bakıma canlandırmaya ve şekillendirmeye olanak sağlayan dildir. Yani, *"içeriğimiz **nasıl görünecek**?"* sorusuna cevap verir.
+
+HTML bölümünde oluşturduğumuz klasöre gidin ve \`styles.css\` adlı bir dosya oluşturun. Bu dosyanın içine aşağıdaki kodları yazın ve kaydedin. 
+~~~css
+body {
+  background-color: black;
+  color: white;
+}
+
+p {
+  font-size: 20px;
+}
+
+.parag {
+  text-align: center;
+}
+~~~
+
+HTML dosyamızdaki elementleri nasıl kancaladığımıza odaklanın. Element isimlerini kullanabildiğimiz gibi, elementlere ait *class* gibi nitelikleri de kullanabiliyoruz.
+
+Şimdi \`index.html\` dosyasını yeniden açın ve değişikliği görün.
+
+## Sonuç
+Giriş seviyesi için bu kadar kodlama gerekli diye düşünüyorum, bu derste size HTML ve CSS aşinalığı kazandırmaya çalıştım, sözkonusu teknolojileri ilerleyen derslerde daha detaylı işleyeceğiz.
+`)
